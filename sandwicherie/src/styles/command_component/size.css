@@ -1,0 +1,24 @@
+.wrapper {
+  text-align: center;
+}
+
+.wrapper .title {
+  margin-bottom: 5rem;
+}
+
+.content__command {
+  width: 100%;
+}
+
+.command__description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+/*# sourceMappingURL=size.css.map */

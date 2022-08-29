@@ -1,0 +1,75 @@
+body {
+  background-color: #161a1d;
+}
+
+.logo__nav__command {
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  margin-top: 15px;
+  -webkit-transform: translateX(-4px);
+          transform: translateX(-4px);
+}
+
+.logo__nav__command .cow__head {
+  margin: 0 1px 0 1px;
+}
+
+.white {
+  color: white;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.container__command {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  margin-top: 5rem;
+}
+
+.container__command .container__selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.container__command .container__selection .progress__bar {
+  margin-bottom: 5rem;
+}
+
+.container__command .container__selection .content__command {
+  height: 600px;
+}
+
+.container__command .resume__command {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: red;
+}
+/*# sourceMappingURL=command.css.map */

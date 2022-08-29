@@ -1,0 +1,17 @@
+.wrapper {
+  text-align: center;
+  .title {
+    margin-bottom: 5rem;
+  }
+}
+
+.content__command {
+  width: 100%;
+}
+
+.command__description {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}

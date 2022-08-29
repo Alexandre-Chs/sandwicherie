@@ -1,0 +1,226 @@
+.container__home {
+  background-image: url("../images/sandwich__restaurant.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.container__home nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 15px;
+  margin: 0px 60px 0 60px;
+}
+
+.container__home nav a {
+  text-decoration: none;
+}
+
+.container__home nav .about__nav {
+  color: rgba(255, 255, 255, 0.637);
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.container__home nav .logo__nav {
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container__home nav .logo__nav .cow__head {
+  margin: 0 1px 0 1px;
+}
+
+.container__home nav .instagram__nav {
+  color: rgba(255, 255, 255, 0.637);
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.container__home .content__description {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container__home .content__description h1 {
+  color: white;
+  letter-spacing: 2px;
+  font-size: 4em;
+  font-weight: 400;
+  width: 10em;
+  margin: 0 auto;
+  -webkit-transform: translate(0px, -70px);
+          transform: translate(0px, -70px);
+}
+
+.container__home .content__description .description__home {
+  text-align: center;
+  width: 100%;
+}
+
+.container__home .content__description .description__home h1 {
+  color: white;
+  width: 50%;
+  margin: 0 auto;
+  letter-spacing: 10px;
+}
+
+.container__home .button__home {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container__home .button__home .button__command {
+  position: absolute;
+  bottom: 30px;
+  padding: 15px 30px;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container__home .button__home .button__command:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+
+.container__description {
+  scroll-behavior: smooth;
+  position: relative;
+  background-image: url("../images/sandwich__home.jpg");
+  background-size: cover;
+  background-position: bottom right;
+  border-top: 5px solid white;
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.container__description .description__aboutUs {
+  color: white;
+  margin-right: 20rem;
+  margin-top: 15rem;
+}
+
+.container__description .description__aboutUs h1 {
+  font-size: 3em;
+  margin-bottom: 1em;
+  font-weight: 700;
+}
+
+.container__description .description__aboutUs p {
+  margin-left: 1rem;
+  letter-spacing: 2px;
+}
+
+.icon__scroll {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: -10px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: #a59b92;
+}
+
+.icon__scroll .arrow_scroll {
+  height: 30px;
+  width: auto;
+  color: white;
+  -webkit-animation: upAndDown 1s infinite;
+          animation: upAndDown 1s infinite;
+}
+
+@-webkit-keyframes upAndDown {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes upAndDown {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=home.css.map */
