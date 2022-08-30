@@ -4,6 +4,7 @@ import "../../styles/command_component/meat.css";
 const Meat = ({ command, onChange }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
 
+  console.log(meats)
   const handleMeatChange = (e) => {
     const tempMeat = [...meats];
 
@@ -24,7 +25,6 @@ const Meat = ({ command, onChange }) => {
   return (
     <div className="wrapper">
       <div className="command__meat">
-        <p>{JSON.stringify(meats, null, 2)}</p>
         <p>Choix de la viande : </p>
         <p>Vous pouvez choisir maximum deux viandes!</p>
         <div className="options__meat">
@@ -43,7 +43,7 @@ const Meat = ({ command, onChange }) => {
             name="meat"
             value="Steak"
             onChange={handleMeatChange}
-            checked={meats.includes("Steak")} //TODO Faire les autres
+            checked={meats.includes("Steak")} 
           ></input>
           <label htmlFor="meat">Steak</label>
         </div>

@@ -18,7 +18,7 @@ const Size = ({ command, onChange }) => {
             type="radio"
             id="medium__size"
             name="size"
-            value="Medium"
+            value="Moyen"
             onChange={handleChange}
           ></input>
           <label htmlFor="medium__size">Moyen</label>
@@ -28,7 +28,7 @@ const Size = ({ command, onChange }) => {
             type="radio"
             id="big__size"
             name="size"
-            value="Big"
+            value="Grand"
             onChange={handleChange}
           ></input>
           <label htmlFor="big__size">Grand</label>

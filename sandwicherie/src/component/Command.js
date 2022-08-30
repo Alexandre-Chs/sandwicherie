@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SiHappycow } from "react-icons/si";
 import Size from "./command/Size";
 import Meat from "./command/Meat";
+import Accompaniments from "./command/Accompaniments";
 import "../styles/command.css";
 
 const Command = () => {
@@ -12,17 +13,22 @@ const Command = () => {
   //State qui recupère toute la commande du même ID
   const [command, setCommand] = useState();
 
+  const [checked, setChecked] = useState(false)
   //Permet de switch de composant en fonction du compteur
   let content = "";
   if (count === 0) {
     content = <Size command={command} onChange={setCommand} />;
   } else if (count === 1) {
     content = <Meat command={command} onChange={setCommand}/>;
+  } else if (count ===2) {
+    content = <Accompaniments command={command} onChange={setCommand}/>
   }
 
+
+  // TODO : Faire un state qui passe de false a true quand command a une entree, puis retourne false etc.. et le mettre en disabled checked
+  // STRING -> OBJECT
   let array = JSON.stringify(command);
 
-  console.log(command);
   return (
     <div className="wrapper">
       <div>
@@ -43,8 +49,8 @@ const Command = () => {
           <div className="button__command">
             <button onClick={() => setCount(count - 1)} disabled={count === 0}>
               Back
-            </button>
-            <button onClick={() => setCount(count + 1)}>Next</button>
+            </button> 
+            <button onClick={() => setCount(count + 1)} disabled={checked} >Next</button>
           </div>
         </div>
         <div className="resume__command white">
