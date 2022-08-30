@@ -20,6 +20,8 @@ const Size = ({ command, onChange }) => {
             name="size"
             value="Moyen"
             onChange={handleChange}
+            checked
+            //TODO savoir pourquoi 1 click check pas
           ></input>
           <label htmlFor="medium__size">Moyen</label>
         </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { SiHappycow } from "react-icons/si";
+import { SiCountingworkspro, SiHappycow } from "react-icons/si";
 import Size from "./command/Size";
 import Meat from "./command/Meat";
 import Accompaniments from "./command/Accompaniments";
@@ -13,22 +13,33 @@ const Command = () => {
   //State qui recupère toute la commande du même ID
   const [command, setCommand] = useState();
 
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
   //Permet de switch de composant en fonction du compteur
   let content = "";
   if (count === 0) {
     content = <Size command={command} onChange={setCommand} />;
   } else if (count === 1) {
-    content = <Meat command={command} onChange={setCommand}/>;
-  } else if (count ===2) {
-    content = <Accompaniments command={command} onChange={setCommand}/>
+    content = <Meat command={command} onChange={setCommand} />;
+  } else if (count === 2) {
+    content = <Accompaniments command={command} onChange={setCommand} />;
   }
 
+  useEffect(() => {
+    setChecked(true);
+  }, [command]);
 
-  // TODO : Faire un state qui passe de false a true quand command a une entree, puis retourne false etc.. et le mettre en disabled checked
+  const handleAddOne = () => {
+    setCount(count + 1);
+    setChecked(false);
+  };
   // STRING -> OBJECT
   let array = JSON.stringify(command);
 
+console.log(command)
+
+
+
+//TODO : garder la donnée size si je prev
   return (
     <div className="wrapper">
       <div>
@@ -49,8 +60,10 @@ const Command = () => {
           <div className="button__command">
             <button onClick={() => setCount(count - 1)} disabled={count === 0}>
               Back
-            </button> 
-            <button onClick={() => setCount(count + 1)} disabled={checked} >Next</button>
+            </button>
+            <button onClick={handleAddOne} disabled={checked === false}>
+              Next
+            </button>
           </div>
         </div>
         <div className="resume__command white">
