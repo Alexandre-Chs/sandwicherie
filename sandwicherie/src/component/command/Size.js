@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import "../../styles/command_component/size.css";
 
 const Size = ({ command, onChange }) => {
+
+  useEffect(() => {
+    onChange({
+      ...command,
+      Taille: "Moyen"
+    })
+  }, [])
+  
   const handleChange = (event) => {
     onChange({
       ...command,
-      Taille: event.target.value,
+      Taille: event.target.value
     });
   };
 
+  //TODO : garder le state actif si je prev
   return (
     <div className="wrapper">
       <div className="command__size">
@@ -20,8 +29,7 @@ const Size = ({ command, onChange }) => {
             name="size"
             value="Moyen"
             onChange={handleChange}
-            checked
-            //TODO savoir pourquoi 1 click check pas
+            defaultChecked
           ></input>
           <label htmlFor="medium__size">Moyen</label>
         </div>

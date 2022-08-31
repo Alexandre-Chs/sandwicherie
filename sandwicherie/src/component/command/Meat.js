@@ -4,7 +4,6 @@ import "../../styles/command_component/meat.css";
 const Meat = ({ command, onChange }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
 
-  console.log(meats)
   const handleMeatChange = (e) => {
     const tempMeat = [...meats];
 

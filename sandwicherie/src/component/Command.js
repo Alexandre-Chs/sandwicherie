@@ -12,7 +12,6 @@ const Command = () => {
   const [count, setCount] = useState(0);
   //State qui recupère toute la commande du même ID
   const [command, setCommand] = useState();
-
   const [checked, setChecked] = useState(false);
   //Permet de switch de composant en fonction du compteur
   let content = "";
@@ -28,17 +27,13 @@ const Command = () => {
     setChecked(true);
   }, [command]);
 
-  const handleAddOne = () => {
-    setCount(count + 1);
-    setChecked(false);
-  };
   // STRING -> OBJECT
   let array = JSON.stringify(command);
 
 console.log(command)
 
 
-
+// TODO : Si un checkbox est checked -> on peux suivant, si rien on disabled
 //TODO : garder la donnée size si je prev
   return (
     <div className="wrapper">
@@ -61,23 +56,38 @@ console.log(command)
             <button onClick={() => setCount(count - 1)} disabled={count === 0}>
               Back
             </button>
-            <button onClick={handleAddOne} disabled={checked === false}>
+            <button onChange={() => setChecked(false)} onClick={() => setCount(count + 1)} disabled={!checked}>
               Next
             </button>
           </div>
         </div>
-        <div className="resume__command white">
+        <div className="resume__command">
           <div>
+          <div className="header__bill">
+          <p className="star">*************************************</p>
+          <p className="title__bill">TICKET DE CAISSE</p>
+          <p className="star">*************************************</p>
+          </div>
+
+          <div className="informations__bill">
+            <p>Magasin : Cow Snack - 3 rue de la liberté</p>
+            <p>Tel : 06 94 30 29 48</p>
+          </div>
+
+          <div>
+          <p className="star">*************************************</p>
+          </div>
+
             {array === undefined ? (
               "Votre commande ici"
             ) : (
               <div>
-                <p>Taille du sandwich : {command.Taille}</p>
+                <p className="command__bill">Sandwich taille {command.Taille}</p>
                 {command.Viande && (
-                  <div>
-                    <h2>Viandes:</h2>
-                    {command.Viande.map((meat) => (
-                      <p>{meat}</p>
+                  <div className="command__bill">
+                  <p>Viande dans le sandwich : </p>
+                    {command.Viande.map((meat, i) => (
+                      <p key={i} >→ {meat}</p>
                     ))}
                   </div>
                 )}
@@ -91,8 +101,3 @@ console.log(command)
 };
 
 export default Command;
-
-// faire content description au milieu
-// bouton en bas prev/ suiv
-// en haut progressbar
-// mettre données en brut au début et rajouter via DB ensuite
