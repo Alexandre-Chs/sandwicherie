@@ -5,6 +5,7 @@ import { SiCountingworkspro, SiHappycow } from "react-icons/si";
 import Size from "./command/Size";
 import Meat from "./command/Meat";
 import Accompaniments from "./command/Accompaniments";
+import Sauces from "./command/Sauces";
 import "../styles/command.css";
 
 const Command = () => {
@@ -30,11 +31,10 @@ const Command = () => {
   // STRING -> OBJECT
   let array = JSON.stringify(command);
 
-console.log(command)
+  console.log(command);
 
-
-// TODO : Si un checkbox est checked -> on peux suivant, si rien on disabled
-//TODO : garder la donnée size si je prev
+  // TODO : Si un checkbox est checked -> on peux suivant, si rien on disabled
+  //TODO : garder la donnée size si je prev
   return (
     <div className="wrapper">
       <div>
@@ -56,38 +56,53 @@ console.log(command)
             <button onClick={() => setCount(count - 1)} disabled={count === 0}>
               Back
             </button>
-            <button onChange={() => setChecked(false)} onClick={() => setCount(count + 1)} disabled={!checked}>
+            <button
+              onChange={() => setChecked(false)}
+              onClick={() => setCount(count + 1)}
+              disabled={!checked}
+            >
               Next
             </button>
           </div>
         </div>
         <div className="resume__command">
           <div>
-          <div className="header__bill">
-          <p className="star">*************************************</p>
-          <p className="title__bill">TICKET DE CAISSE</p>
-          <p className="star">*************************************</p>
-          </div>
+            <div className="header__bill">
+              <p className="star">*************************************</p>
+              <p className="title__bill">TICKET DE CAISSE</p>
+              <p className="star">*************************************</p>
+            </div>
 
-          <div className="informations__bill">
-            <p>Magasin : Cow Snack - 3 rue de la liberté</p>
-            <p>Tel : 06 94 30 29 48</p>
-          </div>
+            <div className="informations__bill">
+              <p>Magasin : Cow Snack - 3 rue de la liberté</p>
+              <p>Tel : 06 94 30 29 48</p>
+            </div>
 
-          <div>
-          <p className="star">*************************************</p>
-          </div>
+            <div>
+              <p className="star">*************************************</p>
+            </div>
 
             {array === undefined ? (
               "Votre commande ici"
             ) : (
               <div>
-                <p className="command__bill">Sandwich taille {command.Taille}</p>
+                <p className="command__bill">
+                  Sandwich taille {command.Taille}
+                </p>
                 {command.Viande && (
                   <div className="command__bill">
-                  <p>Viande dans le sandwich : </p>
+                    <p className="text__bill">Viande dans le sandwich : </p>
                     {command.Viande.map((meat, i) => (
-                      <p key={i} >→ {meat}</p>
+                      <p key={i}>→ {meat}</p>
+                    ))}
+                  </div>
+                )}
+
+                {command.Accompagnements && (
+                  <div className="command__bill">
+                    <p className="text__bill">Accompagnements : </p>
+                    {command.Accompagnements.map((accomp, i) => (
+                      <p key={i}>→{accomp}</p>
                     ))}
                   </div>
                 )}

@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "../../styles/command_component/size.css";
+import "../../styles/size.css";
 
 const Size = ({ command, onChange }) => {
-
   useEffect(() => {
     onChange({
       ...command,
-      Taille: "Moyen"
-    })
-  }, [])
-  
+      Taille: "Moyen",
+    });
+  }, []);
+
   const handleChange = (event) => {
     onChange({
       ...command,
-      Taille: event.target.value
+      Taille: event.target.value,
     });
   };
 

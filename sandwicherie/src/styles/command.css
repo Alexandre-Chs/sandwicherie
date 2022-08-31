@@ -73,7 +73,7 @@ body {
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
   margin-right: 2rem;
-  background-color: #EBEAE6;
+  background-color: #ebeae6;
 }
 
 .container__command .resume__command .star {
@@ -100,5 +100,9 @@ body {
 .container__command .resume__command .command__bill {
   margin-top: 1rem;
   font-size: 0.9em;
+}
+
+.container__command .resume__command .command__bill .text__bill {
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=command.css.map */

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,MAAM;EACrB,eAAe,EAAE,MAAM;CAC1B",
-    "sources": [
-        "meat.scss"
-    ],
-    "names": [],
-    "file": "meat.css"
-}

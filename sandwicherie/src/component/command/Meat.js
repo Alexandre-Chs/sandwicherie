@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/command_component/meat.css";
+import "../../styles/meat.css";
 
 const Meat = ({ command, onChange }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
