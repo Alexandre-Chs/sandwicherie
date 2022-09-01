@@ -42,13 +42,11 @@ body {
     }
   }
   .resume__command {
-    color: black;
     flex: 1;
     flex-wrap: nowrap;
     flex-basis: 100px;
     margin-right: 2rem;
     background-color: #ebeae6;
-
     .star {
       font-size: 0.8em;
     }
@@ -76,4 +74,10 @@ body {
       }
     }
   }
+}
+
+
+.total__bill {
+  margin-top: 2rem;
+  font-weight: 700;
 }

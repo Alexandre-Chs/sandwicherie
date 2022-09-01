@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/meat.css";
 
-const Meat = ({ command, onChange }) => {
+const Meat = ({ command, onChange, price, setPrice }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
+  const [total, setTotal] = useState(0);
 
   const handleMeatChange = (e) => {
     const tempMeat = [...meats];
-
     if (tempMeat.includes(e.target.value)) {
       tempMeat.splice(
         tempMeat.findIndex((meat) => meat === e.target.value),
@@ -17,8 +17,16 @@ const Meat = ({ command, onChange }) => {
       tempMeat.push(e.target.value);
     }
 
+    if (meats.length) {
+      setTotal(1.5);
+    } else if (meats.length === 1) {
+      setTotal(3);
+    }
+
+    //TODO WHAT ???! check un check fait nimporte quoi
     setMeats(tempMeat);
     onChange({ ...command, Viande: tempMeat });
+    console.log(total);
   };
 
   return (
@@ -42,7 +50,7 @@ const Meat = ({ command, onChange }) => {
             name="meat"
             value="Steak"
             onChange={handleMeatChange}
-            checked={meats.includes("Steak")} 
+            checked={meats.includes("Steak")}
           ></input>
           <label htmlFor="meat">Steak</label>
         </div>

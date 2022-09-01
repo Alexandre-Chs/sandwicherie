@@ -13,24 +13,40 @@ import "../styles/command.css";
 const Command = () => {
   //Compteur
   const [count, setCount] = useState(0);
+  const [price, setPrice] = useState(0);
   //State qui recupère toute la commande du même ID
   const [command, setCommand] = useState();
   const [checked, setChecked] = useState(false);
   //Prix de la command total
   //Permet de switch de composant en fonction du compteur
+
   let content = "";
   if (count === 0) {
-    content = <Size command={command} onChange={setCommand} />;
+    content = (
+      <Size
+        command={command}
+        onChange={setCommand}
+        price={price}
+        setPrice={setPrice}
+      />
+    );
   } else if (count === 1) {
-    content = <Meat command={command} onChange={setCommand} />;
+    content = (
+      <Meat
+        command={command}
+        onChange={setCommand}
+        price={price}
+        setPrice={setPrice}
+      />
+    );
   } else if (count === 2) {
     content = <Accompaniments command={command} onChange={setCommand} />;
   } else if (count === 3) {
     content = <Sauces command={command} onChange={setCommand} />;
-  } else if(count === 4) {
-    content = <Drink command={command} onChange={setCommand}/>
+  } else if (count === 4) {
+    content = <Drink command={command} onChange={setCommand} />;
   } else if (count === 5) {
-    content = <Dessert command={command} onChange={setCommand}/>
+    content = <Dessert command={command} onChange={setCommand} />;
   }
 
   useEffect(() => {
@@ -39,8 +55,6 @@ const Command = () => {
 
   // STRING -> OBJECT
   let array = JSON.stringify(command);
-
-  console.log(command);
 
   // TODO : Si un checkbox est checked -> on peux suivant, si rien on disabled
   //TODO : garder la donnée size si je prev
@@ -96,7 +110,8 @@ const Command = () => {
             ) : (
               <div>
                 <p className="command__bill">
-                  Sandwich taille {command.Taille}
+                  {command.Taille} sandwich{" "}
+                  {command.Taille === "Moyen" ? "1€" : "2€"}
                 </p>
                 {command.Viande && (
                   <div className="command__bill">
@@ -128,20 +143,24 @@ const Command = () => {
                 {command.Boisson && (
                   <div className="command__bill">
                     <p className="text__bill">Boisson : </p>
-                    {command.Boisson.map((drink,i) => (
+                    {command.Boisson.map((drink, i) => (
                       <p key={i}>→{drink}</p>
-                    ) )}
+                    ))}
                   </div>
                 )}
 
                 {command.Dessert && (
                   <div className="command__bill">
                     <p className="text__bill">Dessert : </p>
-                    {command.Dessert.map((dessert,i) => (
+                    {command.Dessert.map((dessert, i) => (
                       <p key={i}>→{dessert}</p>
                     ))}
                   </div>
                 )}
+
+                <div className="total__bill">
+                  <p>Prix total : {price}€</p>
+                </div>
               </div>
             )}
           </div>

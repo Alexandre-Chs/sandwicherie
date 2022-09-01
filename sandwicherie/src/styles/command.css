@@ -64,7 +64,6 @@ body {
 }
 
 .container__command .resume__command {
-  color: black;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -104,5 +103,10 @@ body {
 
 .container__command .resume__command .command__bill .text__bill {
   margin-bottom: 10px;
+}
+
+.total__bill {
+  margin-top: 2rem;
+  font-weight: 700;
 }
 /*# sourceMappingURL=command.css.map */
