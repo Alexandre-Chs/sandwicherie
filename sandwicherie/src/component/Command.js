@@ -6,6 +6,8 @@ import Size from "./command/Size";
 import Meat from "./command/Meat";
 import Accompaniments from "./command/Accompaniments";
 import Sauces from "./command/Sauces";
+import Drink from "./command/Drink";
+import Dessert from "./command/Dessert";
 import "../styles/command.css";
 
 const Command = () => {
@@ -14,6 +16,7 @@ const Command = () => {
   //State qui recupère toute la commande du même ID
   const [command, setCommand] = useState();
   const [checked, setChecked] = useState(false);
+  //Prix de la command total
   //Permet de switch de composant en fonction du compteur
   let content = "";
   if (count === 0) {
@@ -24,6 +27,10 @@ const Command = () => {
     content = <Accompaniments command={command} onChange={setCommand} />;
   } else if (count === 3) {
     content = <Sauces command={command} onChange={setCommand} />;
+  } else if(count === 4) {
+    content = <Drink command={command} onChange={setCommand}/>
+  } else if (count === 5) {
+    content = <Dessert command={command} onChange={setCommand}/>
   }
 
   useEffect(() => {
@@ -114,6 +121,24 @@ const Command = () => {
                     <p className="text__bill">Sauces : </p>
                     {command.Sauces.map((sauce, i) => (
                       <p key={i}>→{sauce}</p>
+                    ))}
+                  </div>
+                )}
+
+                {command.Boisson && (
+                  <div className="command__bill">
+                    <p className="text__bill">Boisson : </p>
+                    {command.Boisson.map((drink,i) => (
+                      <p key={i}>→{drink}</p>
+                    ) )}
+                  </div>
+                )}
+
+                {command.Dessert && (
+                  <div className="command__bill">
+                    <p className="text__bill">Dessert : </p>
+                    {command.Dessert.map((dessert,i) => (
+                      <p key={i}>→{dessert}</p>
                     ))}
                   </div>
                 )}

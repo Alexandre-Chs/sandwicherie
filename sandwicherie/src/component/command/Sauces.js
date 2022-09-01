@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Sauces = ({ command, onChange }) => {
-  const [sauces, setSauces] = useState([]);
+  const [sauces, setSauces] = useState(command.Sauces ? [...command.Sauces] : []);
 
   const handleChangeSauces = (e) => {
     const tempSauces = [...sauces];
