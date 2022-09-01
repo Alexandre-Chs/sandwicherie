@@ -22,6 +22,8 @@ const Command = () => {
     content = <Meat command={command} onChange={setCommand} />;
   } else if (count === 2) {
     content = <Accompaniments command={command} onChange={setCommand} />;
+  } else if (count === 3) {
+    content = <Sauces command={command} onChange={setCommand} />;
   }
 
   useEffect(() => {
@@ -103,6 +105,15 @@ const Command = () => {
                     <p className="text__bill">Accompagnements : </p>
                     {command.Accompagnements.map((accomp, i) => (
                       <p key={i}>→{accomp}</p>
+                    ))}
+                  </div>
+                )}
+
+                {command.Sauces && (
+                  <div className="command__bill">
+                    <p className="text__bill">Sauces : </p>
+                    {command.Sauces.map((sauce, i) => (
+                      <p key={i}>→{sauce}</p>
                     ))}
                   </div>
                 )}
