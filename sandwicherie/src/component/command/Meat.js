@@ -3,7 +3,7 @@ import "../../styles/meat.css";
 
 const Meat = ({ command, onChange, price, setPrice }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
-  const [total, setTotal] = useState(0);
+  let [total, setTotal] = useState(0);
 
   const handleMeatChange = (e) => {
     const tempMeat = [...meats];
@@ -17,18 +17,29 @@ const Meat = ({ command, onChange, price, setPrice }) => {
       tempMeat.push(e.target.value);
     }
 
-    if (meats.length) {
-      setTotal(1.5);
-    } else if (meats.length === 1) {
-      setTotal(3);
-    }
-
-    //TODO WHAT ???! check un check fait nimporte quoi
     setMeats(tempMeat);
     onChange({ ...command, Viande: tempMeat });
-    console.log(total);
   };
 
+ 
+  useEffect(() => {
+    const updatePrice = () => {
+      if(meats.length === 1 ) {
+        return parseInt(price) + 1.5
+      } else if (meats.length === 2) {
+        return parseInt(price) + 3
+      } else {
+        return price
+      }
+    }
+    setPrice(updatePrice());
+  }, [meats])
+
+
+  console.log(total)
+  
+//Si un element checked, dire prix + 1.5, si 2 elements checked dire prix + 1.5
+ 
   return (
     <div className="wrapper">
       <div className="command__meat">

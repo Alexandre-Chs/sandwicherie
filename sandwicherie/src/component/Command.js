@@ -53,6 +53,7 @@ const Command = () => {
     setChecked(true);
   }, [command]);
 
+
   // STRING -> OBJECT
   let array = JSON.stringify(command);
 
