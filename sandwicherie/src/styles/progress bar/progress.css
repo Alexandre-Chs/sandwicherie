@@ -1,0 +1,81 @@
+:root {
+  --line-border-fill: #3f3f3f;
+  --line-border-empty: #ffffff;
+}
+
+.container {
+  text-align: center;
+}
+
+.container-progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  width: 550px;
+  margin-bottom: 1.5rem;
+}
+
+.container-progress::before {
+  position: absolute;
+  content: "";
+  height: 4px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: var(--line-border-empty);
+  z-index: -1;
+}
+
+.progress {
+  position: absolute;
+  background-color: var(--line-border-fill);
+  height: 4px;
+  width: 0%;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: -1;
+  -webkit-transition: width 1s ease;
+  transition: width 1s ease;
+}
+
+.check__icon {
+  color: white;
+  z-index: 20;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.check__icon__dot {
+  color: black;
+}
+
+.circles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: white;
+}
+
+.circles.active {
+  border: 3px solid var(--line-border-fill);
+  background-color: #3f3f3f;
+}
+/*# sourceMappingURL=progress.css.map */

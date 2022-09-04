@@ -8,37 +8,40 @@ import Accompaniments from "./command/Accompaniments";
 import Sauces from "./command/Sauces";
 import Drink from "./command/Drink";
 import Dessert from "./command/Dessert";
+import Progress from "./progress bar/Progress";
 import "../styles/command.css";
 
 const Command = () => {
   //Compteur
   const [count, setCount] = useState(0);
+  const stepNumber = 6;
+  //State qui recupère toute la commande
+  const [command, setCommand] = useState({});
   const [price, setPrice] = useState(0);
-  //State qui recupère toute la commande du même ID
-  const [command, setCommand] = useState();
+
   const [checked, setChecked] = useState(false);
   //Prix de la command total
   //Permet de switch de composant en fonction du compteur
 
+  useEffect(() => {
+    let newPrice = 0;
+    if (command.Taille) {
+      newPrice += command.Taille === "Moyen" ? 1 : 2;
+    }
+    if (command.Viande) {
+      newPrice += command.Viande.length * 1.5;
+    }
+    if (command.Accompagnements) {
+      newPrice += command.Accompagnements.length * 1;
+    }
+    setPrice(newPrice);
+  }, [command]);
+
   let content = "";
   if (count === 0) {
-    content = (
-      <Size
-        command={command}
-        onChange={setCommand}
-        price={price}
-        setPrice={setPrice}
-      />
-    );
+    content = <Size command={command} onChange={setCommand} />;
   } else if (count === 1) {
-    content = (
-      <Meat
-        command={command}
-        onChange={setCommand}
-        price={price}
-        setPrice={setPrice}
-      />
-    );
+    content = <Meat command={command} onChange={setCommand} />;
   } else if (count === 2) {
     content = <Accompaniments command={command} onChange={setCommand} />;
   } else if (count === 3) {
@@ -53,12 +56,9 @@ const Command = () => {
     setChecked(true);
   }, [command]);
 
-
   // STRING -> OBJECT
   let array = JSON.stringify(command);
 
-  // TODO : Si un checkbox est checked -> on peux suivant, si rien on disabled
-  //TODO : garder la donnée size si je prev
   return (
     <div className="wrapper">
       <div>
@@ -73,7 +73,9 @@ const Command = () => {
       <section className="container__command">
         <div className="container__selection white">
           <div className="progress__bar">
-            <p>progress bar</p>
+            <div>
+              <Progress count={count} stepNumber={stepNumber} />
+            </div>
           </div>
           <div className="content__command">{content}</div>
           <div className="button__command">
@@ -83,7 +85,7 @@ const Command = () => {
             <button
               onChange={() => setChecked(false)}
               onClick={() => setCount(count + 1)}
-              disabled={!checked}
+              disabled={count >= stepNumber - 1}
             >
               Next
             </button>

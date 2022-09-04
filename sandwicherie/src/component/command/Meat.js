@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/meat.css";
 
-const Meat = ({ command, onChange, price, setPrice }) => {
+const Meat = ({ command, onChange }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
-  let [total, setTotal] = useState(0);
+  const [count, setCount] = useState();
+  const [total, setTotal] = useState(0);
 
   const handleMeatChange = (e) => {
     const tempMeat = [...meats];
@@ -16,30 +17,26 @@ const Meat = ({ command, onChange, price, setPrice }) => {
       if (tempMeat.length === 2) return;
       tempMeat.push(e.target.value);
     }
-
     setMeats(tempMeat);
     onChange({ ...command, Viande: tempMeat });
+
+    if (tempMeat.length === 1) {
+      setTotal(1.5);
+    } else if (tempMeat.length === 2) {
+      setTotal(3);
+    } else {
+      setTotal(0);
+    }
   };
 
- 
   useEffect(() => {
-    const updatePrice = () => {
-      if(meats.length === 1 ) {
-        return parseInt(price) + 1.5
-      } else if (meats.length === 2) {
-        return parseInt(price) + 3
-      } else {
-        return price
-      }
-    }
-    setPrice(updatePrice());
-  }, [meats])
+    onChange({ ...command, Prix: total });
+  }, [total]);
 
+  console.log(total);
 
-  console.log(total)
-  
-//Si un element checked, dire prix + 1.5, si 2 elements checked dire prix + 1.5
- 
+  //TODO : Recupérer le prix total des accompagnements et le mettre dans la variable total.
+  //TODO : Ensuite rajouter le total au prix de l'ancien component size qui est stocker dans command.js
   return (
     <div className="wrapper">
       <div className="command__meat">
