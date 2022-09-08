@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/size.css";
 
 const Size = ({ command, onChange }) => {
@@ -8,30 +8,40 @@ const Size = ({ command, onChange }) => {
       Taille: event.target.value,
     });
   };
+
+  useEffect(() => {
+    onChange({ ...command, Taille: "Moyen" });
+  }, []);
+
   return (
     <div className="wrapper">
       <div className="command__size">
-        <p>Taille du sandwich :</p>
+        <p className="header__command">Taille du sandwich :</p>
         <div>
-          <input
-            type="radio"
-            id="medium__size"
-            name="size"
-            value="Moyen"
-            onChange={handleChange}
-            defaultChecked
-          ></input>
-          <label htmlFor="medium__size">Moyen</label>
+          <label htmlFor="medium__size">
+            <input
+              type="radio"
+              id="medium__size"
+              name="size"
+              value="Moyen"
+              onChange={handleChange}
+              defaultChecked
+            ></input>
+            Moyen
+          </label>
         </div>
+
         <div>
-          <input
-            type="radio"
-            id="big__size"
-            name="size"
-            value="Grand"
-            onChange={handleChange}
-          ></input>
-          <label htmlFor="big__size">Grand</label>
+          <label htmlFor="big__size">
+            <input
+              type="radio"
+              id="big__size"
+              name="size"
+              value="Grand"
+              onChange={handleChange}
+            ></input>
+            Grand
+          </label>
         </div>
       </div>
     </div>

@@ -29,12 +29,23 @@ const Command = () => {
       newPrice += command.Taille === "Moyen" ? 1 : 2;
     }
     if (command.Viande) {
-      newPrice += command.Viande.length * 1.5;
+      newPrice += command.Viande.length * 1.2;
     }
     if (command.Accompagnements) {
-      newPrice += command.Accompagnements.length * 1;
+      newPrice += command.Accompagnements.length * 0.5;
     }
-    setPrice(newPrice);
+
+    if (command.Sauces) {
+      newPrice += command.Sauces.length * 0.2;
+    }
+    if (command.Boisson) {
+      newPrice += command.Boisson.length * 1.8;
+    }
+    if (command.Dessert) {
+      newPrice += command.Dessert.length * 0.8;
+    }
+
+    setPrice(newPrice.toFixed(2));
   }, [command]);
 
   let content = "";

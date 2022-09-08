@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "../../styles/drink.css";
 
 const Drink = ({ command, onChange }) => {
 

@@ -40,67 +40,78 @@ const Meat = ({ command, onChange }) => {
   return (
     <div className="wrapper">
       <div className="command__meat">
-        <p>Choix de la viande : </p>
-        <p>Vous pouvez choisir maximum deux viandes!</p>
+        <p>Choix de la viande : ( maximum 2 )</p>
         <div className="options__meat">
-          <input
-            type="checkbox"
-            name="meat"
-            value="Cordon bleu"
-            onChange={handleMeatChange}
-            checked={meats.includes("Cordon bleu")}
-          ></input>
-          <label htmlFor="meat">Cordon bleu</label>
+          <label htmlFor="meat">
+            <input
+              type="checkbox"
+              name="meat"
+              value="Cordon bleu"
+              onChange={handleMeatChange}
+              checked={meats.includes("Cordon bleu")}
+            ></input>
+            Cordon bleu
+          </label>
         </div>
         <div className="options__meat">
-          <input
-            type="checkbox"
-            name="meat"
-            value="Steak"
-            onChange={handleMeatChange}
-            checked={meats.includes("Steak")}
-          ></input>
-          <label htmlFor="meat">Steak</label>
+          <label htmlFor="meat">
+            <input
+              type="checkbox"
+              name="meat"
+              value="Steak"
+              onChange={handleMeatChange}
+              checked={meats.includes("Steak")}
+            ></input>
+            Steak
+          </label>
         </div>
         <div className="options__meat">
-          <input
-            type="checkbox"
-            name="meat"
-            value="Emincés de poulet"
-            onChange={handleMeatChange}
-            checked={meats.includes("Emincés de poulet")}
-          ></input>
-          <label htmlFor="meat">Emincés de poulet</label>
+          <label htmlFor="meat">
+            <input
+              type="checkbox"
+              name="meat"
+              value="Emincés de poulet"
+              onChange={handleMeatChange}
+              checked={meats.includes("Emincés de poulet")}
+            ></input>
+            Emincés de poulet
+          </label>
         </div>
         <div className="options__meat">
-          <input
-            type="checkbox"
-            name="meat"
-            value="Merguez"
-            onChange={handleMeatChange}
-            checked={meats.includes("Merguez")}
-          ></input>
-          <label htmlFor="meat">Merguez</label>
+          <label htmlFor="meat">
+            <input
+              type="checkbox"
+              name="meat"
+              value="Merguez"
+              onChange={handleMeatChange}
+              checked={meats.includes("Merguez")}
+            ></input>
+            Merguez
+          </label>
         </div>
         <div className="options__meat">
-          <input
-            type="checkbox"
-            name="meat"
-            value="Nuggets"
-            onChange={handleMeatChange}
-            checked={meats.includes("Nuggets")}
-          ></input>
-          <label htmlFor="meat">Nuggets</label>
+          <label htmlFor="meat">
+            <input
+              type="checkbox"
+              name="meat"
+              value="Nuggets"
+              onChange={handleMeatChange}
+              checked={meats.includes("Nuggets")}
+            ></input>
+            Nuggets
+          </label>
         </div>
         <div className="options__meat">
-          <input
-            type="checkbox"
-            name="meat"
-            value="Saucisse"
-            onChange={handleMeatChange}
-            checked={meats.includes("Saucisse")}
-          ></input>
-          <label htmlFor="meat">Saucisse</label>
+          <label htmlFor="meat">
+            <input
+              type="checkbox"
+              name="meat"
+              value="Saucisse"
+              onChange={handleMeatChange}
+              checked={meats.includes("Saucisse")}
+            ></input>
+            Saucisse
+          </label>
         </div>
       </div>
     </div>

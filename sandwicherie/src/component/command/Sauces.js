@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import "../../styles/sauces.css";
 
 const Sauces = ({ command, onChange }) => {
-  const [sauces, setSauces] = useState(command.Sauces ? [...command.Sauces] : []);
+  const [sauces, setSauces] = useState(
+    command.Sauces ? [...command.Sauces] : []
+  );
 
   const handleChangeSauces = (e) => {
     const tempSauces = [...sauces];
@@ -20,7 +23,6 @@ const Sauces = ({ command, onChange }) => {
     onChange({ ...command, Sauces: tempSauces });
   };
 
-  console.log(sauces);
   return (
     <div className="wrapper">
       <div className="options__sauces">
@@ -28,70 +30,81 @@ const Sauces = ({ command, onChange }) => {
         <p>Vous pouvez choisir maximum 2 sauces !</p>
       </div>
       <div>
-        <input
-          type="checkbox"
-          name="sauces"
-          id="sauces"
-          value="BBQ Miel"
-          onChange={handleChangeSauces}
-          checked={sauces.includes("BBQ Miel")}
-        ></input>
-        <label htmlFor="sauces">BBQ Miel</label>
+        <label htmlFor="sauces">
+          <input
+            type="checkbox"
+            name="sauces"
+            value="BBQ Miel"
+            onChange={handleChangeSauces}
+            checked={sauces.includes("BBQ Miel")}
+          ></input>
+          BBQ Miel
+        </label>
       </div>
       <div>
-        <input
-          type="checkbox"
-          name="sauces"
-          id="sauces"
-          value="Beurre"
-          onChange={handleChangeSauces}
-          checked={sauces.includes("Beurre")}
-        ></input>
-        <label htmlFor="sauces">Beurre</label>
+        <label htmlFor="sauces">
+          <input
+            type="checkbox"
+            name="sauces"
+            id="sauces"
+            value="Beurre"
+            onChange={handleChangeSauces}
+            checked={sauces.includes("Beurre")}
+          ></input>
+          Beurre
+        </label>
       </div>
       <div>
-        <input
-          type="checkbox"
-          name="sauces"
-          id="sauces"
-          value="Biggy"
-          onChange={handleChangeSauces}
-          checked={sauces.includes("Biggy")}
-        ></input>
-        <label htmlFor="sauces">Biggy</label>
+        <label htmlFor="sauces">
+          <input
+            type="checkbox"
+            name="sauces"
+            id="sauces"
+            value="Biggy"
+            onChange={handleChangeSauces}
+            checked={sauces.includes("Biggy")}
+          ></input>
+          Biggy
+        </label>
       </div>
       <div>
-        <input
-          type="checkbox"
-          name="sauces"
-          id="sauces"
-          value="Curry"
-          onChange={handleChangeSauces}
-          checked={sauces.includes("Curry")}
-        ></input>
-        <label htmlFor="sauces">Curry</label>
+        <label htmlFor="sauces">
+          <input
+            type="checkbox"
+            name="sauces"
+            id="sauces"
+            value="Curry"
+            onChange={handleChangeSauces}
+            checked={sauces.includes("Curry")}
+          ></input>
+          Curry
+        </label>
       </div>
       <div>
-        <input
-          type="checkbox"
-          name="sauces"
-          id="sauces"
-          value="Ketchup"
-          onChange={handleChangeSauces}
-          checked={sauces.includes("Ketchup")}
-        ></input>
-        <label htmlFor="sauces">Ketchup</label>
+        <label htmlFor="sauces">
+          <input
+            type="checkbox"
+            name="sauces"
+            id="sauces"
+            value="Ketchup"
+            onChange={handleChangeSauces}
+            checked={sauces.includes("Ketchup")}
+          ></input>
+          Ketchup
+        </label>
       </div>
       <div>
-        <input
-          type="checkbox"
-          name="sauces"
-          id="sauces"
-          value="Mayonnaise"
-          onChange={handleChangeSauces}
-          checked={sauces.includes("Mayonnaise")}
-        ></input>
-        <label htmlFor="sauces">Mayonnaise</label>
+        <label htmlFor="sauces">
+          <input
+            type="checkbox"
+            name="sauces"
+            id="sauces"
+            value="Mayonnaise"
+            onChange={handleChangeSauces}
+            checked={sauces.includes("Mayonnaise")}
+          ></input>
+          Mayonnaise
+        </label>
       </div>
     </div>
   );

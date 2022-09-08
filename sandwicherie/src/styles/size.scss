@@ -15,3 +15,22 @@
   justify-content: space-around;
   width: 100%;
 }
+
+.sandwich__main {
+  width: 150px;
+}
+
+.command__size {
+  .header__command {
+    margin-bottom: 2rem;
+  }
+
+  label {
+    width: 100px;
+    display: block;
+    text-align: left;
+    margin: 0 auto;
+    transform: translateX(15px);
+    margin-top: 1rem;
+  }
+}
