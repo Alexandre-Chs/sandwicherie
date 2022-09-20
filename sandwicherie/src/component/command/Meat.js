@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/meat.css";
 
 const Meat = ({ command, onChange }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
-  const [count, setCount] = useState();
-  const [total, setTotal] = useState(0);
+  const [count, setCount] = useState(0);
 
   const handleMeatChange = (e) => {
     const tempMeat = [...meats];
@@ -20,32 +18,25 @@ const Meat = ({ command, onChange }) => {
     setMeats(tempMeat);
     onChange({ ...command, Viande: tempMeat });
 
-    if (tempMeat.length === 1) {
-      setTotal(1.5);
-    } else if (tempMeat.length === 2) {
-      setTotal(3);
+    //CHECKBOX IS CHECKED ?
+    if (e.target.checked) {
+      setCount(count + 1);
     } else {
-      setTotal(0);
+      setCount(count - 1);
     }
   };
 
-  useEffect(() => {
-    onChange({ ...command, Prix: total });
-  }, [total]);
-
-  console.log(total);
-
-  //TODO : Recupérer le prix total des accompagnements et le mettre dans la variable total.
-  //TODO : Ensuite rajouter le total au prix de l'ancien component size qui est stocker dans command.js
   return (
     <div className="wrapper">
       <div className="command__meat">
         <p>Choix de la viande : ( maximum 2 )</p>
+        <p className="price">1.2€/viandes</p>
         <div className="options__meat">
-          <label htmlFor="meat">
+          <label htmlFor="meat1" className="test">
             <input
               type="checkbox"
-              name="meat"
+              name="meat1"
+              id="meat1"
               value="Cordon bleu"
               onChange={handleMeatChange}
               checked={meats.includes("Cordon bleu")}
@@ -54,10 +45,11 @@ const Meat = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__meat">
-          <label htmlFor="meat">
+          <label htmlFor="meat2">
             <input
               type="checkbox"
-              name="meat"
+              name="meat2"
+              id="meat2"
               value="Steak"
               onChange={handleMeatChange}
               checked={meats.includes("Steak")}
@@ -66,10 +58,11 @@ const Meat = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__meat">
-          <label htmlFor="meat">
+          <label htmlFor="meat3">
             <input
               type="checkbox"
-              name="meat"
+              name="meat3"
+              id="meat3"
               value="Emincés de poulet"
               onChange={handleMeatChange}
               checked={meats.includes("Emincés de poulet")}
@@ -78,10 +71,11 @@ const Meat = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__meat">
-          <label htmlFor="meat">
+          <label htmlFor="meat4">
             <input
               type="checkbox"
-              name="meat"
+              id="meat4"
+              name="meat4"
               value="Merguez"
               onChange={handleMeatChange}
               checked={meats.includes("Merguez")}
@@ -90,10 +84,11 @@ const Meat = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__meat">
-          <label htmlFor="meat">
+          <label htmlFor="meat5">
             <input
               type="checkbox"
-              name="meat"
+              name="meat5"
+              id="meat5"
               value="Nuggets"
               onChange={handleMeatChange}
               checked={meats.includes("Nuggets")}
@@ -102,10 +97,11 @@ const Meat = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__meat">
-          <label htmlFor="meat">
+          <label htmlFor="meat6">
             <input
               type="checkbox"
-              name="meat"
+              name="meat6"
+              id="meat6"
               value="Saucisse"
               onChange={handleMeatChange}
               checked={meats.includes("Saucisse")}

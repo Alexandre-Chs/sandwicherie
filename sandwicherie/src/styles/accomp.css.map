@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,KAAK;EACd,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,MAAM;EACd,SAAS,EAAE,gBAAgB;EAC3B,UAAU,EAAE,IAAI;CACjB",
-    "sources": [
-        "accomp.scss"
-    ],
-    "names": [],
-    "file": "accomp.css"
-}

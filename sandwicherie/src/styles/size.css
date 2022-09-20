@@ -35,8 +35,18 @@
   display: block;
   text-align: left;
   margin: 0 auto;
-  -webkit-transform: translateX(15px);
-          transform: translateX(15px);
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  width: 120px;
   margin-top: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.command__size input[type="radio"] {
+  cursor: pointer;
 }
 /*# sourceMappingURL=size.css.map */

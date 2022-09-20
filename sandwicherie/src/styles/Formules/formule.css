@@ -1,0 +1,53 @@
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80%;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.content .choice {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1rem;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform ease .5s;
+  transition: -webkit-transform ease .5s;
+  transition: transform ease .5s;
+  transition: transform ease .5s, -webkit-transform ease .5s;
+}
+
+.content .choice:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.content p {
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 1em;
+}
+
+.link__command {
+  text-decoration: none;
+}
+/*# sourceMappingURL=formule.css.map */

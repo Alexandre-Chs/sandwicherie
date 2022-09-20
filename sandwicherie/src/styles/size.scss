@@ -30,7 +30,14 @@
     display: block;
     text-align: left;
     margin: 0 auto;
-    transform: translateX(15px);
+    transform: translateX(0);
+    width: 120px;
     margin-top: 1rem;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  input[type="radio"] {
+    cursor: pointer;
   }
 }

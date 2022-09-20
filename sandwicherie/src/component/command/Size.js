@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/size.css";
+import "../../styles/input.css";
 
 const Size = ({ command, onChange }) => {
   const handleChange = (event) => {
@@ -9,14 +10,15 @@ const Size = ({ command, onChange }) => {
     });
   };
 
-  useEffect(() => {
+  //TODO : TRAVAILLER SUR LE FAIT DE LAISSER LE BUTTON NEXT OUVERT
+  useEffect((event) => {
     onChange({ ...command, Taille: "Moyen" });
   }, []);
 
   return (
     <div className="wrapper">
       <div className="command__size">
-        <p className="header__command">Taille du sandwich :</p>
+        <p className="header__command">Taille du sandwich</p>
         <div>
           <label htmlFor="medium__size">
             <input
@@ -27,7 +29,7 @@ const Size = ({ command, onChange }) => {
               onChange={handleChange}
               defaultChecked
             ></input>
-            Moyen
+            Moyen 1€
           </label>
         </div>
 
@@ -40,7 +42,7 @@ const Size = ({ command, onChange }) => {
               value="Grand"
               onChange={handleChange}
             ></input>
-            Grand
+            Grand 2€
           </label>
         </div>
       </div>

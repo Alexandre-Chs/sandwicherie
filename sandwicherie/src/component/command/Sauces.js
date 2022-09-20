@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../styles/sauces.css";
 
 const Sauces = ({ command, onChange }) => {
   const [sauces, setSauces] = useState(
@@ -23,43 +22,45 @@ const Sauces = ({ command, onChange }) => {
     onChange({ ...command, Sauces: tempSauces });
   };
 
+  console.log(sauces);
   return (
     <div className="wrapper">
       <div className="options__sauces">
-        <p>Choix des sauces</p>
-        <p>Vous pouvez choisir maximum 2 sauces !</p>
+        <p>Choix des sauces : ( maximum 2 )</p>
+        <p className="price">0.2€/sauce</p>
       </div>
       <div>
-        <label htmlFor="sauces">
+        <label htmlFor="sauces1">
           <input
             type="checkbox"
-            name="sauces"
+            name="sauces1"
+            id="sauces1"
             value="BBQ Miel"
             onChange={handleChangeSauces}
             checked={sauces.includes("BBQ Miel")}
-          ></input>
+          />
           BBQ Miel
         </label>
       </div>
       <div>
-        <label htmlFor="sauces">
+        <label htmlFor="sauces2">
           <input
             type="checkbox"
-            name="sauces"
-            id="sauces"
+            name="sauces2"
+            id="sauces2"
             value="Beurre"
             onChange={handleChangeSauces}
             checked={sauces.includes("Beurre")}
-          ></input>
+          />
           Beurre
         </label>
       </div>
       <div>
-        <label htmlFor="sauces">
+        <label htmlFor="sauces3">
           <input
             type="checkbox"
-            name="sauces"
-            id="sauces"
+            name="sauces2"
+            id="sauces2"
             value="Biggy"
             onChange={handleChangeSauces}
             checked={sauces.includes("Biggy")}
@@ -68,11 +69,11 @@ const Sauces = ({ command, onChange }) => {
         </label>
       </div>
       <div>
-        <label htmlFor="sauces">
+        <label htmlFor="sauces4">
           <input
             type="checkbox"
-            name="sauces"
-            id="sauces"
+            name="sauces4"
+            id="sauces4"
             value="Curry"
             onChange={handleChangeSauces}
             checked={sauces.includes("Curry")}
@@ -81,11 +82,11 @@ const Sauces = ({ command, onChange }) => {
         </label>
       </div>
       <div>
-        <label htmlFor="sauces">
+        <label htmlFor="sauces5">
           <input
             type="checkbox"
-            name="sauces"
-            id="sauces"
+            name="sauces5"
+            id="sauces5"
             value="Ketchup"
             onChange={handleChangeSauces}
             checked={sauces.includes("Ketchup")}
@@ -94,11 +95,11 @@ const Sauces = ({ command, onChange }) => {
         </label>
       </div>
       <div>
-        <label htmlFor="sauces">
+        <label htmlFor="sauces6">
           <input
             type="checkbox"
-            name="sauces"
-            id="sauces"
+            name="sauces6"
+            id="sauces6"
             value="Mayonnaise"
             onChange={handleChangeSauces}
             checked={sauces.includes("Mayonnaise")}

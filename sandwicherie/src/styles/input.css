@@ -1,0 +1,64 @@
+label {
+  width: 200px;
+  display: block;
+  text-align: left;
+  margin: 0 auto;
+  -webkit-transform: translateX(40px);
+          transform: translateX(40px);
+  margin-top: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+label,
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+}
+
+input[type="radio"] {
+  opacity: 0;
+}
+
+label:has(input[type="radio"]:checked) {
+  font-weight: bold;
+  color: #2dbf6e;
+}
+
+label:has(input[type="checkbox"]:checked) {
+  font-weight: bold;
+  color: #2dbf6e;
+}
+
+label:hover {
+  -webkit-transition: font-size 200ms ease;
+  transition: font-size 200ms ease;
+  font-weight: bold;
+}
+
+.notHover:hover {
+  font-weight: 500;
+}
+
+.label__final {
+  margin-top: 2rem;
+  position: relative;
+  color: white;
+}
+
+.label__final input {
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+}
+/*# sourceMappingURL=input.css.map */

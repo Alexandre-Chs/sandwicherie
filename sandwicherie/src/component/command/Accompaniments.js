@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../styles/accomp.css";
 
 const Accompaniments = ({ command, onChange }) => {
   const [accomp, setAccomp] = useState(
@@ -27,13 +26,15 @@ const Accompaniments = ({ command, onChange }) => {
     <div>
       <div className="command__accomp">
         <p>Choix des accompagnements : ( maximum 4 )</p>
+        <p className="price">0.5€/accompagnement</p>
 
         <div className="options__accomp">
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp1">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp1"
+                id="accomp1"
                 value="Bacon"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Bacon")}
@@ -43,10 +44,11 @@ const Accompaniments = ({ command, onChange }) => {
           </div>
 
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp2">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp2"
+                id="accomp2"
                 value="Cheddar"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Cheddar")}
@@ -55,10 +57,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp3">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp3"
+                id="accomp3"
                 value="Gruyère"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Gruyère")}
@@ -67,10 +70,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp4">
               <input
                 type="checkbox"
-                name="accomp"
+                id="accomp4"
+                name="accomp4"
                 value="Jambon de Bayonne"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Jambon de Bayonne")}
@@ -79,10 +83,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp5">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp5"
+                id="accomp5"
                 value="Jambon blanc"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Jambon blanc")}
@@ -91,10 +96,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp6">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp6"
+                id="accomp6"
                 value="Lardons"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Lardons")}
@@ -103,10 +109,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp7">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp7"
+                id="accomp7"
                 value="Oignons"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Oignons")}
@@ -115,10 +122,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp8">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp8"
+                id="accomp8"
                 value="Pâtes"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Pâtes")}
@@ -127,10 +135,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp9">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp9"
+                id="accomp9"
                 value="Salade"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Salade")}
@@ -139,10 +148,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp10">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp10"
+                id="accomp10"
                 value="Salami"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Salami")}
@@ -151,10 +161,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp11">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp11"
+                id="accomp11"
                 value="Saucisson"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Saucisson")}
@@ -163,10 +174,11 @@ const Accompaniments = ({ command, onChange }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="accomp">
+            <label htmlFor="accomp12">
               <input
                 type="checkbox"
-                name="accomp"
+                name="accomp12"
+                id="accomp12"
                 value="Tomate"
                 onChange={handleChangeAccomp}
                 checked={accomp.includes("Tomate")}

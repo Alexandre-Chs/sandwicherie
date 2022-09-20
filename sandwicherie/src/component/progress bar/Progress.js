@@ -20,7 +20,6 @@ const Progress = ({ count, stepNumber }) => {
 
   const [width, setWidth] = useState(0);
 
-  //REWORK : Revoir handlechange pour pas avoir a rendre des données bruts.
   const handleChange = () => {
     setWidth(count * (100 / (stepNumber - 1)));
   };
