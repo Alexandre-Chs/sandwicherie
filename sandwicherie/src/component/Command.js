@@ -182,62 +182,76 @@ const Command = () => {
               ) : (
                 <div>
                   <p className="command__bill">
-                    {command.Taille} sandwich{" "}
-                    {command.Taille === "Moyen" ? "1€" : "2€"}
+                    <div className="resume__command__receipt">
+                      <p>{command.Taille} sandwich</p>
+                      <p>{command.Taille === "Moyen" ? "1€" : "2€"}</p>
+                    </div>
                   </p>
                   {command.Viande && (
                     <div className="command__bill">
-                      <p className="text__bill">Viande dans le sandwich : </p>
                       {command.Viande.map((meat, i) => (
-                        <p key={i}>→ {meat}</p>
+                        <div className="resume__command__receipt">
+                          <p key={i}>{meat}</p>
+                          <p>1.2€</p>
+                        </div>
                       ))}
                     </div>
                   )}
 
                   {command.Accompagnements && (
                     <div className="command__bill">
-                      <p className="text__bill">Accompagnements : </p>
                       {command.Accompagnements.map((accomp, i) => (
-                        <p key={i}>→{accomp}</p>
+                        <div className="resume__command__receipt">
+                          <p key={i}>{accomp}</p>
+                          <p>0.5€</p>
+                        </div>
                       ))}
                     </div>
                   )}
 
                   {command.Sauces && (
                     <div className="command__bill">
-                      <p className="text__bill">Sauces : </p>
                       {command.Sauces.map((sauce, i) => (
-                        <p key={i}>→{sauce}</p>
+                        <div className="resume__command__receipt">
+                          <p key={i}>{sauce}</p>
+                          <p>0.2€</p>
+                        </div>
                       ))}
                     </div>
                   )}
 
                   {command.Boisson && (
                     <div className="command__bill">
-                      <p className="text__bill">Boisson : </p>
                       {command.Boisson.map((drink, i) => (
-                        <p key={i}>→{drink}</p>
+                        <div className="resume__command__receipt">
+                          <p key={i}>{drink}</p>
+                          <p>1.8€</p>
+                        </div>
                       ))}
                     </div>
                   )}
 
                   {command.Dessert && (
                     <div className="command__bill">
-                      <p className="text__bill">Dessert : </p>
                       {command.Dessert.map((dessert, i) => (
-                        <p key={i}>→{dessert}</p>
+                        <div className="resume__command__receipt">
+                          <p key={i}>{dessert}</p>
+                          <p>0.8€</p>
+                        </div>
                       ))}
                     </div>
                   )}
 
                   <div className="total__bill">
-                    <p>Prix total : {price}€</p>
+                    <p>Prix : {price}€</p>
                   </div>
                 </div>
               )}
             </div>
+
             <div className="barcode">
-              <img src={barcode}></img>
+              <div className="fake__zip"></div>
+              <img src={barcode} alt="barcode"></img>
             </div>
           </div>
         ) : (

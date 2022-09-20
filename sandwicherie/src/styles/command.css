@@ -69,6 +69,10 @@ body {
 }
 
 .container__command .resume__command {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  padding-bottom: 140px;
   -webkit-transform: translateY(-50px);
           transform: translateY(-50px);
   -webkit-box-flex: 1;
@@ -82,7 +86,6 @@ body {
   color: black;
   background-color: #ebeae6;
   border-radius: 5px;
-  max-height: 800px;
   position: relative;
 }
 
@@ -112,17 +115,44 @@ body {
 }
 
 .container__command .resume__command .command__bill {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 0.9em;
+  text-align: left;
+}
+
+.container__command .resume__command .command__bill .resume__command__receipt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 2rem;
+  margin-top: 0.5rem;
 }
 
 .container__command .resume__command .command__bill .text__bill {
   margin-bottom: 10px;
 }
 
-.container__command .resume__command .barcode img {
+.container__command .resume__command .barcode .fake__zip {
   width: 100%;
-  height: auto;
+  border-bottom: 2px dashed black;
+  position: absolute;
+  bottom: 130px;
+}
+
+.container__command .resume__command .barcode img {
+  width: 80%;
+  max-height: 90px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .total__bill {

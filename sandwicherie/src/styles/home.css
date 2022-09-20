@@ -20,6 +20,17 @@
   margin: 0px 60px 0 60px;
 }
 
+@media screen and (max-width: 500px) {
+  .container__home nav {
+    margin: 0px;
+    font-size: 1.5em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
 .container__home nav a {
   text-decoration: none;
 }
@@ -44,6 +55,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  .container__home nav .logo__nav {
+    font-size: 1em;
+  }
 }
 
 .container__home nav .logo__nav .cow__head {
@@ -73,15 +90,10 @@
           justify-content: center;
 }
 
-.container__home .content__description h1 {
-  color: white;
-  letter-spacing: 2px;
-  font-size: 4em;
-  font-weight: 400;
-  width: 10em;
-  margin: 0 auto;
-  -webkit-transform: translate(0px, -70px);
-          transform: translate(0px, -70px);
+@media screen and (max-width: 500px) {
+  .container__home .content__description {
+    height: 70vh;
+  }
 }
 
 .container__home .content__description .description__home {
@@ -94,6 +106,14 @@
   width: 50%;
   margin: 0 auto;
   letter-spacing: 10px;
+  font-size: 4em;
+}
+
+@media screen and (max-width: 500px) {
+  .container__home .content__description .description__home h1 {
+    font-size: 2em;
+    width: 100%;
+  }
 }
 
 .container__home .button__home {
@@ -149,16 +169,38 @@
           justify-content: flex-end;
 }
 
+@media screen and (max-width: 500px) {
+  .container__description {
+    background-position: -450px 0;
+  }
+}
+
 .container__description .description__aboutUs {
   color: white;
   margin-right: 20rem;
   margin-top: 15rem;
 }
 
+@media screen and (max-width: 500px) {
+  .container__description .description__aboutUs {
+    margin-right: 0;
+    margin-top: 7rem;
+    margin-left: 1rem;
+    width: 100%;
+  }
+}
+
 .container__description .description__aboutUs h1 {
   font-size: 3em;
   margin-bottom: 1em;
   font-weight: 700;
+}
+
+@media screen and (max-width: 500px) {
+  .container__description .description__aboutUs h1 {
+    font-size: 2em;
+    text-align: left;
+  }
 }
 
 .container__description .description__aboutUs p {
