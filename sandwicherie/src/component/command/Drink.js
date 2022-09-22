@@ -79,11 +79,11 @@ const Drink = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__drink">
-          <label htmlFor="drink4">
+          <label htmlFor="drink5">
             <input
               type="checkbox"
-              name="drink4"
-              id="drink4"
+              name="drink5"
+              id="drink5"
               value="Oasis"
               onChange={handleChangeDrink}
               checked={drink.includes("Oasis")}
@@ -92,11 +92,11 @@ const Drink = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__drink">
-          <label htmlFor="drink5">
+          <label htmlFor="drink6">
             <input
               type="checkbox"
-              name="drink5"
-              id="drink5"
+              name="drink6"
+              id="drink6"
               value="Orangina"
               onChange={handleChangeDrink}
               checked={drink.includes("Orangina")}
@@ -105,11 +105,11 @@ const Drink = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__drink">
-          <label htmlFor="drink6">
+          <label htmlFor="drink7">
             <input
               type="checkbox"
-              name="drink6"
-              id="drink6"
+              name="drink7"
+              id="drink7"
               value="Pepsi"
               onChange={handleChangeDrink}
               checked={drink.includes("Pepsi")}
@@ -118,11 +118,11 @@ const Drink = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__drink">
-          <label htmlFor="drink7">
+          <label htmlFor="drink8">
             <input
               type="checkbox"
-              name="drink7"
-              id="drink7"
+              name="drink8"
+              id="drink8"
               value="Sprite"
               onChange={handleChangeDrink}
               checked={drink.includes("Sprite")}
@@ -131,11 +131,11 @@ const Drink = ({ command, onChange }) => {
           </label>
         </div>
         <div className="options__drink">
-          <label htmlFor="drink8">
+          <label htmlFor="drink9">
             <input
               type="checkbox"
-              name="drink8"
-              id="drink8"
+              name="drink9"
+              id="drink9"
               value="Tropico"
               onChange={handleChangeDrink}
               checked={drink.includes("Tropico")}

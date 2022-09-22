@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { SiCountingworkspro, SiHappycow } from "react-icons/si";
+import { SiHappycow } from "react-icons/si";
 import Size from "./command/Size";
 import Meat from "./command/Meat";
 import Accompaniments from "./command/Accompaniments";
@@ -13,6 +13,9 @@ import "../styles/command.css";
 import Thanks from "./command/Thanks";
 import { FaArrowRight } from "react-icons/fa";
 import barcode from "../images/barcode.png";
+import { BiReceipt } from "react-icons/bi";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+import Modal from "react-modal";
 
 const Command = () => {
   const [count, setCount] = useState(0);
@@ -20,6 +23,30 @@ const Command = () => {
   const [command, setCommand] = useState({});
   const [price, setPrice] = useState(0);
   const [checked, setChecked] = useState(false);
+  //MODAL
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  let openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  let closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "#ebeae6",
+      width: "70%",
+      height: "70%",
+    },
+  };
 
   useEffect(() => {
     let newPrice = 0;
@@ -87,7 +114,6 @@ const Command = () => {
   // STRING -> OBJECT
   let array = JSON.stringify(command);
 
-  console.log(command);
   return (
     <div className="wrapper">
       <div>
@@ -99,6 +125,118 @@ const Command = () => {
           w Snack
         </Link>
       </div>
+      <button className="mobile__button__receipt" onClick={openModal}>
+        <BiReceipt size={40} />
+      </button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        style={customStyles}
+        ariaHideApp={false}
+        
+      >
+        <div onClick={closeModal} className="mobile__closeModal">
+          <AiOutlineCloseSquare size={30} />
+        </div>
+        <div className="resume__command__mobile">
+          <div>
+            <div className="logo__receipt">
+              <SiHappycow className="cow__head" size={50} />
+            </div>
+            <div className="header__bill">
+              <p className="star">*************************************</p>
+              <p className="title__bill">TICKET DE CAISSE</p>
+              <p className="star">*************************************</p>
+            </div>
+
+            <div className="informations__bill">
+              <p>Magasin : Cow Snack - 3 rue de la liberté</p>
+              <p>Tel : 06 94 30 29 48</p>
+            </div>
+
+            <div>
+              <p className="star">*************************************</p>
+            </div>
+
+            {array === undefined ? (
+              "Votre commande ici"
+            ) : (
+              <div>
+                <div className="command__bill">
+                  <div className="resume__command__receipt">
+                    <p>{command.Taille} sandwich</p>
+                    <p>{command.Taille === "Moyen" ? "1€" : "2€"}</p>
+                  </div>
+                </div>
+                {command.Viande && (
+                  <div className="command__bill">
+                    {command.Viande.map((meat, i) => (
+                      <div className="resume__command__receipt">
+                        <p key={i}>{meat}</p>
+                        <p>1.2€</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {command.Accompagnements && (
+                  <div className="command__bill">
+                    {command.Accompagnements.map((accomp, i) => (
+                      <div className="resume__command__receipt">
+                        <p key={i}>{accomp}</p>
+                        <p>0.5€</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {command.Sauces && (
+                  <div className="command__bill">
+                    {command.Sauces.map((sauce, i) => (
+                      <div className="resume__command__receipt">
+                        <p key={i}>{sauce}</p>
+                        <p>0.2€</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {command.Boisson && (
+                  <div className="command__bill">
+                    {command.Boisson.map((drink, i) => (
+                      <div className="resume__command__receipt">
+                        <p key={i}>{drink}</p>
+                        <p>1.8€</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {command.Dessert && (
+                  <div className="command__bill">
+                    {command.Dessert.map((dessert, i) => (
+                      <div className="resume__command__receipt">
+                        <p key={i}>{dessert}</p>
+                        <p>0.8€</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="total__bill">
+                  <p>Prix : {price}€</p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="barcode">
+            <div className="fake__zip"></div>
+            <img src={barcode} alt="barcode"></img>
+          </div>
+        </div>
+      </Modal>
       <section className="container__command">
         <div className="container__selection">
           <div className="progress__bar">
@@ -153,7 +291,7 @@ const Command = () => {
               )}
             </div>
           ) : (
-            <p></p>
+            <div></div>
           )}
         </div>
         {count < 7 ? (
@@ -181,12 +319,12 @@ const Command = () => {
                 "Votre commande ici"
               ) : (
                 <div>
-                  <p className="command__bill">
+                  <div className="command__bill">
                     <div className="resume__command__receipt">
                       <p>{command.Taille} sandwich</p>
                       <p>{command.Taille === "Moyen" ? "1€" : "2€"}</p>
                     </div>
-                  </p>
+                  </div>
                   {command.Viande && (
                     <div className="command__bill">
                       {command.Viande.map((meat, i) => (
@@ -255,7 +393,7 @@ const Command = () => {
             </div>
           </div>
         ) : (
-          <p></p>
+          <div></div>
         )}
       </section>
     </div>

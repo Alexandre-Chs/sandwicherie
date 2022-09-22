@@ -41,9 +41,15 @@ body {
     flex: 4;
     .progress__bar {
       margin-bottom: 5rem;
+      @media screen and(max-width: 750px) {
+        margin-bottom: 0;
+      }
     }
     .content__command {
       height: 500px;
+      @media screen and(max-width: 750px) {
+        height: auto;
+      }
     }
   }
 
@@ -59,6 +65,10 @@ body {
     background-color: #ebeae6;
     border-radius: 5px;
     position: relative;
+
+    @media screen and (max-width: 750px) {
+      display: none;
+    }
     .logo__receipt {
       margin-top: 20px;
     }
@@ -149,6 +159,9 @@ body {
     width: 500px;
     text-align: center;
     transform: translateX(0);
+    @media screen and(max-width: 750px) {
+      width: 100%;
+    }
   }
 
   #phone {
@@ -162,6 +175,10 @@ body {
     font-weight: 700;
     animation-name: size;
     animation-duration: 25s;
+    @media screen and(max-width: 750px) {
+      font-size: 5em;
+      
+    }
   }
 }
 
@@ -264,6 +281,9 @@ body {
 //BUTTONS
 .wrapper_buttons {
   display: flex;
+  @media screen and(max-width: 750px) {
+    margin-top: 2rem;
+  }
 }
 
 .buttons {
@@ -288,16 +308,6 @@ body {
   }
 }
 
-@keyframes colorFade {
-  0% {
-    background-color: transparent;
-  }
-
-  100% {
-    background-color: #2dbf6e;
-  }
-}
-
 .next__button {
   display: flex;
   align-items: center;
@@ -318,4 +328,80 @@ input[type="checkbox"]:checked,
 
 .button__final {
   display: flex;
+}
+
+//MOBILE BUTTON RECEIPT
+.mobile__button__receipt {
+  display: none;
+  animation-name: moove;
+  animation-duration: 10s;
+  @media screen and (max-width: 750px) {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.mobile__closeModal {
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  color: black;
+}
+
+.resume__command__mobile {
+  width: 100%;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 0.8em;
+  .title__bill {
+    margin-bottom: 3px;
+  }
+  .logo__receipt {
+    margin-bottom: 10px;
+  }
+  @media screen and(max-width: 750px) {
+    .informations__bill {
+      text-align: left;
+      margin: 10px 0;
+    }
+
+    .command__bill {
+      text-align: left;
+      .resume__command__receipt {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .barcode {
+      img {
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        max-height: 90px;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .fake__zip {
+      width: 90%;
+      border-bottom: 2px dashed black;
+      position: absolute;
+      bottom: 130px;
+    }
+  }
 }

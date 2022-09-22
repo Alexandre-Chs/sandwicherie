@@ -59,8 +59,8 @@ const Sauces = ({ command, onChange }) => {
         <label htmlFor="sauces3">
           <input
             type="checkbox"
-            name="sauces2"
-            id="sauces2"
+            name="sauces3"
+            id="sauces3"
             value="Biggy"
             onChange={handleChangeSauces}
             checked={sauces.includes("Biggy")}

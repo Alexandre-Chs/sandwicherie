@@ -20,7 +20,9 @@ const Home = () => {
             </span>
             w Snack
           </Link>
-          <a className="instagram__nav">Instagram</a>
+          <a className="instagram__nav" href="https://www.instagram.com/">
+            Instagram
+          </a>
         </nav>
         <section className="content__description">
           <div className="description__home">

@@ -19,6 +19,12 @@
   margin-bottom: 1.5rem;
 }
 
+@media screen and (max-width: 1050px) {
+  .container-progress {
+    width: 310px;
+  }
+}
+
 .container-progress::before {
   position: absolute;
   content: "";

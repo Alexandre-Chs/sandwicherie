@@ -41,6 +41,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 500px) {
+  .container__home nav .about__nav {
+    font-size: 0.8em;
+  }
+}
+
 .container__home nav .logo__nav {
   font-weight: 700;
   font-size: 1.3em;
@@ -60,6 +66,10 @@
 @media screen and (max-width: 500px) {
   .container__home nav .logo__nav {
     font-size: 1em;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -71,6 +81,13 @@
   color: rgba(255, 255, 255, 0.637);
   font-size: 0.8em;
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .container__home nav .instagram__nav {
+    margin-bottom: 0.5rem;
+    font-size: 0.8em;
+  }
 }
 
 .container__home .content__description {

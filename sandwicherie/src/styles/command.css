@@ -64,8 +64,20 @@ body {
   margin-bottom: 5rem;
 }
 
+@media screen and (max-width: 750px) {
+  .container__command .container__selection .progress__bar {
+    margin-bottom: 0;
+  }
+}
+
 .container__command .container__selection .content__command {
   height: 500px;
+}
+
+@media screen and (max-width: 750px) {
+  .container__command .container__selection .content__command {
+    height: auto;
+  }
 }
 
 .container__command .resume__command {
@@ -87,6 +99,12 @@ body {
   background-color: #ebeae6;
   border-radius: 5px;
   position: relative;
+}
+
+@media screen and (max-width: 750px) {
+  .container__command .resume__command {
+    display: none;
+  }
 }
 
 .container__command .resume__command .logo__receipt {
@@ -196,6 +214,12 @@ body {
           transform: translateX(0);
 }
 
+@media screen and (max-width: 750px) {
+  .wrapper__final label {
+    width: 100%;
+  }
+}
+
 .wrapper__final #phone {
   margin-left: 10px;
 }
@@ -207,6 +231,12 @@ body {
           animation-name: size;
   -webkit-animation-duration: 25s;
           animation-duration: 25s;
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper__thanks p:first-child {
+    font-size: 5em;
+  }
 }
 
 .loader__final {
@@ -352,6 +382,12 @@ body {
   display: flex;
 }
 
+@media screen and (max-width: 750px) {
+  .wrapper_buttons {
+    margin-top: 2rem;
+  }
+}
+
 .buttons {
   font-size: 1.1em;
   cursor: pointer;
@@ -370,24 +406,6 @@ body {
 
 .next__button:disabled .arrow__buttons {
   opacity: 0;
-}
-
-@-webkit-keyframes colorFade {
-  0% {
-    background-color: transparent;
-  }
-  100% {
-    background-color: #2dbf6e;
-  }
-}
-
-@keyframes colorFade {
-  0% {
-    background-color: transparent;
-  }
-  100% {
-    background-color: #2dbf6e;
-  }
 }
 
 .next__button {
@@ -420,5 +438,88 @@ input[type="checkbox"]:checked,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.mobile__button__receipt {
+  display: none;
+  -webkit-animation-name: moove;
+          animation-name: moove;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+}
+
+@media screen and (max-width: 750px) {
+  .mobile__button__receipt {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.mobile__closeModal {
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  color: black;
+}
+
+.resume__command__mobile {
+  width: 100%;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.resume__command__mobile .title__bill {
+  margin-bottom: 3px;
+}
+
+.resume__command__mobile .logo__receipt {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 750px) {
+  .resume__command__mobile .informations__bill {
+    text-align: left;
+    margin: 10px 0;
+  }
+  .resume__command__mobile .command__bill {
+    text-align: left;
+  }
+  .resume__command__mobile .command__bill .resume__command__receipt {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .resume__command__mobile .barcode img {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    max-height: 90px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .resume__command__mobile .fake__zip {
+    width: 90%;
+    border-bottom: 2px dashed black;
+    position: absolute;
+    bottom: 130px;
+  }
 }
 /*# sourceMappingURL=command.css.map */

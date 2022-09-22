@@ -22,6 +22,9 @@
       color: rgba(255, 255, 255, 0.637);
       font-size: 0.8em;
       cursor: pointer;
+      @media screen and (max-width: 500px) {
+        font-size: 0.8em;
+      }
     }
     .logo__nav {
       font-weight: 700;
@@ -33,6 +36,8 @@
       justify-content: center;
       @media screen and(max-width:500px) {
         font-size: 1em;
+        order: 1;
+        margin-bottom: 0.5rem;
       }
       .cow__head {
         margin: 0 1px 0 1px;
@@ -43,6 +48,10 @@
       color: rgba(255, 255, 255, 0.637);
       font-size: 0.8em;
       cursor: pointer;
+      @media screen and (max-width: 500px) {
+        margin-bottom: 0.5rem;
+        font-size: 0.8em;
+      }
     }
   }
 
