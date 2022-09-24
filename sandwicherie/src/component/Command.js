@@ -1,6 +1,14 @@
+//Import React and more
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import axios from "axios";
+//Import icons
 import { SiHappycow } from "react-icons/si";
+import { FaArrowRight } from "react-icons/fa";
+import { BiReceipt } from "react-icons/bi";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+//Import component
 import Size from "./command/Size";
 import Meat from "./command/Meat";
 import Accompaniments from "./command/Accompaniments";
@@ -9,31 +17,32 @@ import Drink from "./command/Drink";
 import Dessert from "./command/Dessert";
 import Progress from "./progress bar/Progress";
 import Final from "./command/Final";
-import "../styles/command.css";
 import Thanks from "./command/Thanks";
-import { FaArrowRight } from "react-icons/fa";
+//Import styles
+import "../styles/command.css";
+//Import img
 import barcode from "../images/barcode.png";
-import { BiReceipt } from "react-icons/bi";
-import { AiOutlineCloseSquare } from "react-icons/ai";
-import Modal from "react-modal";
 
 const Command = () => {
+  //Counter for switch component
   const [count, setCount] = useState(0);
   const stepNumber = 6;
+  //Global command in object
   const [command, setCommand] = useState({});
+  //State for global price
   const [price, setPrice] = useState(0);
+  //State if checkbox is checked or not
   const [checked, setChecked] = useState(false);
-  //MODAL
+  //Modal for mobile only
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   let openModal = () => {
     setModalIsOpen(true);
   };
-
   let closeModal = () => {
     setModalIsOpen(false);
   };
-
+  //Styles for modal
   const customStyles = {
     content: {
       top: "50%",
@@ -48,6 +57,7 @@ const Command = () => {
     },
   };
 
+  //add new price when command is updated
   useEffect(() => {
     let newPrice = 0;
     if (command.Taille) {
@@ -69,10 +79,10 @@ const Command = () => {
     if (command.Dessert) {
       newPrice += command.Dessert.length * 0.8;
     }
-
     setPrice(newPrice.toFixed(2));
   }, [command]);
 
+  //Switch component in terms of component
   let content = "";
   if (count === 0) {
     content = <Size command={command} onChange={setCommand} />;
@@ -92,6 +102,7 @@ const Command = () => {
     content = <Thanks></Thanks>;
   }
 
+  //Check is checkbox is checked or not. If checked : next button is available, else disabled it
   useEffect(() => {
     if (count === 0) {
       setChecked(true);
@@ -105,14 +116,42 @@ const Command = () => {
     if (count === 3) {
       setChecked(command.Sauces && command.Sauces.length > 0);
     }
-
     if (count === 6) {
       setChecked(command.Telephone && command.Telephone.length >= 10);
     }
   }, [count, command]);
 
-  // STRING -> OBJECT
+  //Convert string to JSON
   let array = JSON.stringify(command);
+
+  //Post action with axios
+  const onClickSubmit = () => {
+    setCount(count + 1);
+    postData();
+  };
+
+  const postData = () => {
+    for (const [name, type] of Object.entries(command)) {
+      if (name === "Telephone") {
+        axios
+          .post("http://localhost:8000/users", {
+            phone: type,
+          })
+          .then((res) => {
+            console.log(res);
+          });
+      } else {
+        axios
+          .post("http://localhost:8000/ingredients", {
+            name: name,
+            type: type.toString(),
+          })
+          .then((res) => {
+            console.log(res);
+          });
+      }
+    }
+  };
 
   return (
     <div className="wrapper">
@@ -134,7 +173,6 @@ const Command = () => {
         contentLabel="Example Modal"
         style={customStyles}
         ariaHideApp={false}
-        
       >
         <div onClick={closeModal} className="mobile__closeModal">
           <AiOutlineCloseSquare size={30} />
@@ -281,7 +319,7 @@ const Command = () => {
                   </button>
                   <button
                     type="submit"
-                    onClick={() => setCount(count + 1)}
+                    onClick={onClickSubmit}
                     disabled={!checked}
                     className="next__button buttons"
                   >

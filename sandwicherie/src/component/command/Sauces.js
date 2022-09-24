@@ -22,7 +22,6 @@ const Sauces = ({ command, onChange }) => {
     onChange({ ...command, Sauces: tempSauces });
   };
 
-  console.log(sauces);
   return (
     <div className="wrapper">
       <div className="options__sauces">

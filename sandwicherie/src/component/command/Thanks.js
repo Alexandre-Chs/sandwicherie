@@ -20,7 +20,7 @@ const Thanks = () => {
             <p>d'avoir passé commande</p>
           </div>
           <div className="loader__final">
-            <div class="lds-roller">
+            <div className="lds-roller">
               <div></div>
               <div></div>
               <div></div>

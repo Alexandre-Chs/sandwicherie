@@ -1,5 +1,5 @@
 .container__home {
-  background-image: url("../images/sandwich__restaurant.jpg");
+  background-image: url("../../images/sandwich__restaurant.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -17,7 +17,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-top: 15px;
-  margin: 0px 60px 0 60px;
+  margin: 0 60px;
 }
 
 @media screen and (max-width: 500px) {
@@ -39,12 +39,6 @@
   color: rgba(255, 255, 255, 0.637);
   font-size: 0.8em;
   cursor: pointer;
-}
-
-@media screen and (max-width: 500px) {
-  .container__home nav .about__nav {
-    font-size: 0.8em;
-  }
 }
 
 .container__home nav .logo__nav {
@@ -74,7 +68,7 @@
 }
 
 .container__home nav .logo__nav .cow__head {
-  margin: 0 1px 0 1px;
+  margin: 0 1px;
 }
 
 .container__home nav .instagram__nav {
@@ -86,7 +80,6 @@
 @media screen and (max-width: 500px) {
   .container__home nav .instagram__nav {
     margin-bottom: 0.5rem;
-    font-size: 0.8em;
   }
 }
 
@@ -172,7 +165,7 @@
 .container__description {
   scroll-behavior: smooth;
   position: relative;
-  background-image: url("../images/sandwich__home.jpg");
+  background-image: url("../../images/sandwich__home.jpg");
   background-size: cover;
   background-position: bottom right;
   border-top: 5px solid white;
@@ -196,13 +189,12 @@
   color: white;
   margin-right: 20rem;
   margin-top: 15rem;
+  margin-left: 4rem;
 }
 
 @media screen and (max-width: 500px) {
   .container__description .description__aboutUs {
-    margin-right: 0;
-    margin-top: 7rem;
-    margin-left: 1rem;
+    margin: 7rem 0 0 1rem;
     width: 100%;
   }
 }
@@ -215,7 +207,7 @@
 
 @media screen and (max-width: 500px) {
   .container__description .description__aboutUs h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: left;
   }
 }
@@ -223,6 +215,13 @@
 .container__description .description__aboutUs p {
   margin-left: 1rem;
   letter-spacing: 2px;
+}
+
+@media screen and (max-width: 500px) {
+  .container__description .description__aboutUs p {
+    font-size: 0.8em;
+    margin: 0;
+  }
 }
 
 .icon__scroll {

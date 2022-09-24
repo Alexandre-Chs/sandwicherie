@@ -11,7 +11,7 @@ export const IngredientsModel = (sequelize, DataTypes) => {
     },
     type: {
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
     },
   });
 };

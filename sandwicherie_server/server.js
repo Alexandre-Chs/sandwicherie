@@ -50,17 +50,14 @@ Commandes.hasMany(IngredientsCommande);
 Ingredients.hasMany(IngredientsCommande);
 
 // SYNC ALL CREATE TABLE
-sequelize.sync({ force: true }).then((_) => {
-  Ingredients.create({
-    name: "salut",
-  });
-});
+sequelize.sync({ force: true });
 
 //ROUTES
 app.get("/", cors(), (req, res) => {
   res.json({ msg: "hello world" });
 });
 
+//INGREDIENTS
 app.get("/ingredients", cors(), async (req, res) => {
   const ingredients = await Ingredients.findAll();
   res.json({ data: ingredients });
@@ -73,11 +70,19 @@ app.post("/ingredients", (req, res) => {
   });
 });
 
+//USERS
+app.get("/users", cors(), async (req, res) => {
+  const users = await User.findAll();
+  res.json({ data: users });
+});
+
+app.post("/users", (req, res) => {
+  User.create(req.body).then((element) => {
+    const message = `Un nouveau users au telephone ${req.body.phone} a bien été creer`;
+    res.json({ message, data: element });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// TODO :
-// Faire un useState object HOC, et l'ingrementer au fur et a mesure des composants.
-// A la fin, convertir les donnes en JSON, et post. 
-

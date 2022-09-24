@@ -1,5 +1,5 @@
 .container__home {
-  background-image: url("../images/sandwich__restaurant.jpg");
+  background-image: url("../../images/sandwich__restaurant.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 15px;
-    margin: 0px 60px 0 60px;
+    margin: 0 60px;
     @media screen and (max-width: 500px) {
       margin: 0px;
       font-size: 1.5em;
@@ -22,9 +22,6 @@
       color: rgba(255, 255, 255, 0.637);
       font-size: 0.8em;
       cursor: pointer;
-      @media screen and (max-width: 500px) {
-        font-size: 0.8em;
-      }
     }
     .logo__nav {
       font-weight: 700;
@@ -40,7 +37,7 @@
         margin-bottom: 0.5rem;
       }
       .cow__head {
-        margin: 0 1px 0 1px;
+        margin: 0 1px;
       }
     }
 
@@ -50,7 +47,6 @@
       cursor: pointer;
       @media screen and (max-width: 500px) {
         margin-bottom: 0.5rem;
-        font-size: 0.8em;
       }
     }
   }
@@ -109,7 +105,7 @@
 .container__description {
   scroll-behavior: smooth;
   position: relative;
-  background-image: url("../images/sandwich__home.jpg");
+  background-image: url("../../images/sandwich__home.jpg");
   background-size: cover;
   background-position: bottom right;
   border-top: 5px solid white;
@@ -124,10 +120,9 @@
     color: white;
     margin-right: 20rem;
     margin-top: 15rem;
+    margin-left: 4rem;
     @media screen and(max-width: 500px) {
-      margin-right: 0;
-      margin-top: 7rem;
-      margin-left: 1rem;
+      margin: 7rem 0 0 1rem;
       width: 100%;
     }
     h1 {
@@ -135,13 +130,17 @@
       margin-bottom: 1em;
       font-weight: 700;
       @media screen and (max-width: 500px) {
-        font-size: 2em;
+        font-size: 1.5em;
         text-align: left;
       }
     }
     p {
       margin-left: 1rem;
       letter-spacing: 2px;
+      @media screen and(max-width: 500px) {
+        font-size: 0.8em;
+        margin: 0;
+      }
     }
   }
 }

@@ -1,6 +1,5 @@
 import { Fragment } from "react";
-import "../styles/home.css";
-import Server from "./Server";
+import "../styles/Home/home.css";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { SiHappycow } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -34,8 +33,6 @@ const Home = () => {
             </Link>
           </div>
         </section>
-
-        <Server />
       </div>
       <div>
         <div className="container__description" id="about">
