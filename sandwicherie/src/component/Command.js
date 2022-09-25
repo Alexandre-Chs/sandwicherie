@@ -35,6 +35,8 @@ const Command = () => {
   const [checked, setChecked] = useState(false);
   //Modal for mobile only
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  //State for all ingredients
+  const [arrIngredients, setArrIngredients] = useState([]);
 
   let openModal = () => {
     setModalIsOpen(true);
@@ -85,9 +87,21 @@ const Command = () => {
   //Switch component in terms of component
   let content = "";
   if (count === 0) {
-    content = <Size command={command} onChange={setCommand} />;
+    content = (
+      <Size
+        command={command}
+        onChange={setCommand}
+        sizeIngr={arrIngredients.filter((element) => element.type === "Taille")}
+      />
+    );
   } else if (count === 1) {
-    content = <Meat command={command} onChange={setCommand} />;
+    content = (
+      <Meat
+        command={command}
+        onChange={setCommand}
+        sizeIngr={arrIngredients.filter((element) => element.type === "Viande")}
+      />
+    );
   } else if (count === 2) {
     content = <Accompaniments command={command} onChange={setCommand} />;
   } else if (count === 3) {
@@ -131,27 +145,29 @@ const Command = () => {
   };
 
   const postData = () => {
-    for (const [name, type] of Object.entries(command)) {
-      if (name === "Telephone") {
-        axios
-          .post("http://localhost:8000/users", {
-            phone: type,
-          })
-          .then((res) => {
-            console.log(res);
-          });
-      } else {
-        axios
-          .post("http://localhost:8000/ingredients", {
-            name: name,
-            type: type.toString(),
-          })
-          .then((res) => {
-            console.log(res);
-          });
-      }
-    }
+    axios
+      .post("http://localhost:8000/command", command)
+      .then((res) => console.log(res));
   };
+
+  //GET ALL INGREDIENTS
+  useEffect(() => {
+    async function fetchData() {
+      await axios.get("http://localhost:8000/ingredients").then((res) => {
+        let arr = [];
+        res.data.data.map((element) => {
+          arr.push(element);
+        });
+        setArrIngredients(arrIngredients.concat(arr));
+      });
+    }
+    fetchData();
+  }, []);
+
+  //If arrIngredients is undefined when we reload component
+  if (!arrIngredients.length) {
+    return null;
+  }
 
   return (
     <div className="wrapper">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/size.css";
 import "../../styles/input.css";
 
-const Size = ({ command, onChange }) => {
+const Size = ({ command, onChange, sizeIngr }) => {
   const handleChange = (event) => {
     onChange({
       ...command,
@@ -10,41 +10,36 @@ const Size = ({ command, onChange }) => {
     });
   };
 
-  //TODO : TRAVAILLER SUR LE FAIT DE LAISSER LE BUTTON NEXT OUVERT
-  useEffect((event) => {
+  useEffect(() => {
     onChange({ ...command, Taille: "Moyen" });
   }, []);
+
+  //If arrIngredients is undefined when we reload component
+  if (!sizeIngr.length) {
+    return null;
+  }
+
+  console.log(command);
 
   return (
     <div className="wrapper">
       <div className="command__size">
         <p className="header__command">Taille du sandwich</p>
-        <div>
-          <label htmlFor="medium__size">
-            <input
-              type="radio"
-              id="medium__size"
-              name="size"
-              value="Moyen"
-              onChange={handleChange}
-              defaultChecked
-            ></input>
-            Moyen 1€
-          </label>
-        </div>
-
-        <div>
-          <label htmlFor="big__size">
-            <input
-              type="radio"
-              id="big__size"
-              name="size"
-              value="Grand"
-              onChange={handleChange}
-            ></input>
-            Grand 2€
-          </label>
-        </div>
+        {sizeIngr.map((element, idx) => (
+          <div key={idx}>
+            <label htmlFor={element.name}>
+              <input
+                type="radio"
+                id={element.name}
+                name="taille"
+                value={element.name}
+                onChange={handleChange}
+                defaultChecked={element.name === "Moyen"}
+              ></input>
+              {element.name} {element.price}€
+            </label>
+          </div>
+        ))}
       </div>
     </div>
   );

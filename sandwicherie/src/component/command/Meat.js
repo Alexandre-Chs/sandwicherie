@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Meat = ({ command, onChange }) => {
+const Meat = ({ command, onChange, sizeIngr }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
   const [count, setCount] = useState(0);
 
@@ -26,89 +26,31 @@ const Meat = ({ command, onChange }) => {
     }
   };
 
+  //If arrIngredients is undefined when we reload component
+  if (!sizeIngr.length) {
+    return null;
+  }
+
   return (
     <div className="wrapper">
       <div className="command__meat">
         <p>Choix de la viande : ( maximum 2 )</p>
         <p className="price">1.2€/viandes</p>
-        <div className="options__meat">
-          <label htmlFor="meat1" className="test">
-            <input
-              type="checkbox"
-              name="meat1"
-              id="meat1"
-              value="Cordon bleu"
-              onChange={handleMeatChange}
-              checked={meats.includes("Cordon bleu")}
-            ></input>
-            Cordon bleu
-          </label>
-        </div>
-        <div className="options__meat">
-          <label htmlFor="meat2">
-            <input
-              type="checkbox"
-              name="meat2"
-              id="meat2"
-              value="Steak"
-              onChange={handleMeatChange}
-              checked={meats.includes("Steak")}
-            ></input>
-            Steak
-          </label>
-        </div>
-        <div className="options__meat">
-          <label htmlFor="meat3">
-            <input
-              type="checkbox"
-              name="meat3"
-              id="meat3"
-              value="Emincés de poulet"
-              onChange={handleMeatChange}
-              checked={meats.includes("Emincés de poulet")}
-            ></input>
-            Emincés de poulet
-          </label>
-        </div>
-        <div className="options__meat">
-          <label htmlFor="meat4">
-            <input
-              type="checkbox"
-              id="meat4"
-              name="meat4"
-              value="Merguez"
-              onChange={handleMeatChange}
-              checked={meats.includes("Merguez")}
-            ></input>
-            Merguez
-          </label>
-        </div>
-        <div className="options__meat">
-          <label htmlFor="meat5">
-            <input
-              type="checkbox"
-              name="meat5"
-              id="meat5"
-              value="Nuggets"
-              onChange={handleMeatChange}
-              checked={meats.includes("Nuggets")}
-            ></input>
-            Nuggets
-          </label>
-        </div>
-        <div className="options__meat">
-          <label htmlFor="meat6">
-            <input
-              type="checkbox"
-              name="meat6"
-              id="meat6"
-              value="Saucisse"
-              onChange={handleMeatChange}
-              checked={meats.includes("Saucisse")}
-            ></input>
-            Saucisse
-          </label>
-        </div>
+        {sizeIngr.map((element, idx) => (
+          <div className="options__meat" key={idx}>
+            <label htmlFor={element.name}>
+              <input
+                type="checkbox"
+                name="viande"
+                id={element.name}
+                value={element.name}
+                onChange={handleMeatChange}
+                checked={meats.includes(element.name)}
+              ></input>
+              {element.name}
+            </label>
+          </div>
+        ))}
       </div>
     </div>
   );
