@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/size.css";
 import "../../styles/input.css";
 
-const Size = ({ command, onChange, sizeIngr }) => {
+const Size = ({ command, onChange, ingr }) => {
   const handleChange = (event) => {
     onChange({
       ...command,
@@ -15,17 +15,15 @@ const Size = ({ command, onChange, sizeIngr }) => {
   }, []);
 
   //If arrIngredients is undefined when we reload component
-  if (!sizeIngr.length) {
+  if (!ingr.length) {
     return null;
   }
-
-  console.log(command);
 
   return (
     <div className="wrapper">
       <div className="command__size">
         <p className="header__command">Taille du sandwich</p>
-        {sizeIngr.map((element, idx) => (
+        {ingr.map((element, idx) => (
           <div key={idx}>
             <label htmlFor={element.name}>
               <input

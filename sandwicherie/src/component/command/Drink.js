@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Drink = ({ command, onChange }) => {
+const Drink = ({ command, onChange, ingr }) => {
   const [drink, setDrink] = useState(
     command.Boisson ? [...command.Boisson] : []
   );
@@ -21,12 +21,31 @@ const Drink = ({ command, onChange }) => {
     onChange({ ...command, Boisson: tempDrink });
   };
 
+  if (!ingr.length) {
+    return null;
+  }
+
   return (
     <div className="wrapper">
       <div className="command__drink">
         <p>Choix de la boisson : ( maximum 1 )</p>
         <p className="price">1.8€/boisson</p>
         <div className="options__drink">
+          {ingr.map((element, idx) => (
+            <label htmlFor={element.name} key={idx}>
+              <input
+                type="checkbox"
+                name="boisson"
+                id={element.name}
+                value={element.name}
+                onChange={handleChangeDrink}
+                checked={drink.includes(element.name)}
+              ></input>
+              {element.name}
+            </label>
+          ))}
+        </div>
+        {/* <div className="options__drink">
           <label htmlFor="drink1">
             <input
               type="checkbox"
@@ -142,7 +161,7 @@ const Drink = ({ command, onChange }) => {
             ></input>
             Tropico
           </label>
-        </div>
+        </div> */}
       </div>
     </div>
   );

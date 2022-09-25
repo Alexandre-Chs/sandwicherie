@@ -91,7 +91,7 @@ const Command = () => {
       <Size
         command={command}
         onChange={setCommand}
-        sizeIngr={arrIngredients.filter((element) => element.type === "Taille")}
+        ingr={arrIngredients.filter((element) => element.type === "Taille")}
       />
     );
   } else if (count === 1) {
@@ -99,17 +99,43 @@ const Command = () => {
       <Meat
         command={command}
         onChange={setCommand}
-        sizeIngr={arrIngredients.filter((element) => element.type === "Viande")}
+        ingr={arrIngredients.filter((element) => element.type === "Viande")}
       />
     );
   } else if (count === 2) {
-    content = <Accompaniments command={command} onChange={setCommand} />;
+    content = (
+      <Accompaniments
+        command={command}
+        onChange={setCommand}
+        ingr={arrIngredients.filter(
+          (element) => element.type === "Accompagnement"
+        )}
+      />
+    );
   } else if (count === 3) {
-    content = <Sauces command={command} onChange={setCommand} />;
+    content = (
+      <Sauces
+        command={command}
+        onChange={setCommand}
+        ingr={arrIngredients.filter((element) => element.type === "Sauce")}
+      />
+    );
   } else if (count === 4) {
-    content = <Drink command={command} onChange={setCommand} />;
+    content = (
+      <Drink
+        command={command}
+        onChange={setCommand}
+        ingr={arrIngredients.filter((element) => element.type === "Boisson")}
+      />
+    );
   } else if (count === 5) {
-    content = <Dessert command={command} onChange={setCommand} />;
+    content = (
+      <Dessert
+        command={command}
+        onChange={setCommand}
+        ingr={arrIngredients.filter((element) => element.type === "Dessert")}
+      />
+    );
   } else if (count === 6) {
     content = <Final command={command} onChange={setCommand}></Final>;
   } else if (count === 7) {
@@ -168,6 +194,8 @@ const Command = () => {
   if (!arrIngredients.length) {
     return null;
   }
+
+  console.log(command);
 
   return (
     <div className="wrapper">

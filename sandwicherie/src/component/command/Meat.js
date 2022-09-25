@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Meat = ({ command, onChange, sizeIngr }) => {
+const Meat = ({ command, onChange, ingr }) => {
   const [meats, setMeats] = useState(command.Viande ? [...command.Viande] : []);
   const [count, setCount] = useState(0);
 
@@ -27,7 +27,7 @@ const Meat = ({ command, onChange, sizeIngr }) => {
   };
 
   //If arrIngredients is undefined when we reload component
-  if (!sizeIngr.length) {
+  if (!ingr.length) {
     return null;
   }
 
@@ -36,7 +36,7 @@ const Meat = ({ command, onChange, sizeIngr }) => {
       <div className="command__meat">
         <p>Choix de la viande : ( maximum 2 )</p>
         <p className="price">1.2€/viandes</p>
-        {sizeIngr.map((element, idx) => (
+        {ingr.map((element, idx) => (
           <div className="options__meat" key={idx}>
             <label htmlFor={element.name}>
               <input
