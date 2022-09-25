@@ -8,6 +8,7 @@ import { CommandesModel } from "./model/commandes.js";
 import { IngredientCommandesModel } from "./model/ingredients_commandes.js";
 import { IngredientsModel } from "./model/ingredients.js";
 import bodyParser from "body-parser";
+import { allIngredients } from "./Ingredients.js";
 
 //VARIABLES
 dotenv.config();
@@ -38,26 +39,30 @@ try {
 //CREATE TABLE FROM ORM TO SQL WORKBENCH
 export const User = UsersModel(sequelize, DataTypes);
 export const Commandes = CommandesModel(sequelize, DataTypes);
-export const IngredientsCommande = IngredientCommandesModel(
-  sequelize,
-  DataTypes
-);
+// export const IngredientsCommande = IngredientCommandesModel(
+//   sequelize,
+//   DataTypes
+// );
 export const Ingredients = IngredientsModel(sequelize, DataTypes);
 
 //ASSOCIATION BETWEEN MODELS
 User.hasMany(Commandes);
-Commandes.hasMany(IngredientsCommande);
-Ingredients.hasMany(IngredientsCommande);
+Commandes.belongsToMany(Ingredients, { through: "IngredientsCommande" });
+Ingredients.belongsToMany(Commandes, { through: "IngredientsCommande" });
 
 // SYNC ALL CREATE TABLE
-sequelize.sync({ force: true });
+await sequelize.sync({ force: true });
 
 //ROUTES
 app.get("/", cors(), (req, res) => {
   res.json({ msg: "hello world" });
 });
 
-//INGREDIENTS
+for (const ingr of allIngredients) {
+  await Ingredients.create(ingr);
+}
+
+//ALL INGREDIENTS GET
 app.get("/ingredients", cors(), async (req, res) => {
   const ingredients = await Ingredients.findAll();
   res.json({ data: ingredients });
@@ -70,6 +75,8 @@ app.post("/ingredients", (req, res) => {
   });
 });
 
+
+
 //USERS
 app.get("/users", cors(), async (req, res) => {
   const users = await User.findAll();
@@ -79,6 +86,14 @@ app.get("/users", cors(), async (req, res) => {
 app.post("/users", (req, res) => {
   User.create(req.body).then((element) => {
     const message = `Un nouveau users au telephone ${req.body.phone} a bien été creer`;
+    res.json({ message, data: element });
+  });
+});
+
+app.post("/command", (req, res) => {
+  let reqTelephone = { phone: req.body.Telephone };
+  User.create(reqTelephone).then((element) => {
+    const message = "ok";
     res.json({ message, data: element });
   });
 });
