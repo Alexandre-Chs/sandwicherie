@@ -39,16 +39,15 @@ try {
 //CREATE TABLE FROM ORM TO SQL WORKBENCH
 export const User = UsersModel(sequelize, DataTypes);
 export const Commandes = CommandesModel(sequelize, DataTypes);
-// export const IngredientsCommande = IngredientCommandesModel(
-//   sequelize,
-//   DataTypes
-// );
 export const Ingredients = IngredientsModel(sequelize, DataTypes);
 
 //ASSOCIATION BETWEEN MODELS
-User.hasMany(Commandes);
+User.hasMany(Commandes, { foreignKey: "user_id" });
+Commandes.belongsTo(User, { foreignKey: "user_id" });
 Commandes.belongsToMany(Ingredients, { through: "IngredientsCommande" });
 Ingredients.belongsToMany(Commandes, { through: "IngredientsCommande" });
+
+const jc = await Commandes.create({ user_id: 1 });
 
 // SYNC ALL CREATE TABLE
 await sequelize.sync({ force: true });
