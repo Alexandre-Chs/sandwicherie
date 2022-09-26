@@ -75,8 +75,6 @@ app.post("/ingredients", (req, res) => {
   });
 });
 
-
-
 //USERS
 app.get("/users", cors(), async (req, res) => {
   const users = await User.findAll();
@@ -101,3 +99,5 @@ app.post("/command", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+// TEST
