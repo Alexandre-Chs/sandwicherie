@@ -39,14 +39,11 @@ try {
 //CREATE TABLE FROM ORM TO SQL WORKBENCH
 export const User = UsersModel(sequelize, DataTypes);
 export const Commandes = CommandesModel(sequelize, DataTypes);
-// export const IngredientsCommande = IngredientCommandesModel(
-//   sequelize,
-//   DataTypes
-// );
 export const Ingredients = IngredientsModel(sequelize, DataTypes);
 
 //ASSOCIATION BETWEEN MODELS
 User.hasMany(Commandes);
+
 Commandes.belongsToMany(Ingredients, { through: "IngredientsCommande" });
 Ingredients.belongsToMany(Commandes, { through: "IngredientsCommande" });
 
@@ -88,16 +85,29 @@ app.post("/users", (req, res) => {
   });
 });
 
-app.post("/command", (req, res) => {
-  let reqTelephone = { phone: req.body.Telephone };
-  User.create(reqTelephone).then((element) => {
-    const message = "ok";
-    res.json({ message, data: element });
-  });
+app.post("/command", async (req, res) => {
+  // let reqTelephone = { phone: req.body.Telephone };
+  // User.create(reqTelephone).then((element) => {
+  //   const message = "ok";
+  //   res.json({ message, data: element });
+  // });
+
+  let myNewUser = await User.create({ phone: req.body.Telephone });
+  let myNewCommand = await Commandes.create({ userId: myNewUser.id });
+  console.log(req.body);
+  for (const viande of req.body.viandes.id) {
+    // viande représente l'id de la viande ici, d'ou l'intéret que ton front renvoi les id plutôt que les nom de tes ingrédients
+    await IngredientCommand.create({
+      commandId: myNewCommand.id,
+      ingredientId: viande,
+    });
+  }
+});
+
+app.get("/command", cors(), async (req, res) => {
+  console.log(req.body);
 });
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// TEST
