@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
 //Import icons
-import { SiHappycow } from "react-icons/si";
+import { SiHappycow, SiNewjapanprowrestling } from "react-icons/si";
 import { FaArrowRight } from "react-icons/fa";
 import { BiReceipt } from "react-icons/bi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
@@ -172,9 +172,31 @@ const Command = () => {
 
   const postData = () => {
     axios
-      .post("http://localhost:8000/command", command)
+      .post("http://localhost:8000/command", newArr)
       .then((res) => console.log(res));
   };
+
+  let newArr = [];
+
+  useEffect(() => {
+    let values = Object.values(command);
+    values.forEach((element) => {
+      arrIngredients.forEach((elementIngr) => {
+        if (typeof element == "string") {
+          if (element === elementIngr.name) {
+            newArr.push(arrIngredients.indexOf(elementIngr));
+          }
+        } else if (typeof element == "object") {
+          element.forEach((elements) => {
+            if (elements === elementIngr.name) {
+              newArr.push(arrIngredients.indexOf(elementIngr));
+            }
+          });
+        }
+      });
+      console.log(newArr);
+    });
+  }, [command]);
 
   //GET ALL INGREDIENTS
   useEffect(() => {
@@ -194,8 +216,6 @@ const Command = () => {
   if (!arrIngredients.length) {
     return null;
   }
-
-  console.log(command);
 
   return (
     <div className="wrapper">
