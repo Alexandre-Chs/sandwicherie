@@ -44,10 +44,9 @@ export const Ingredients = IngredientsModel(sequelize, DataTypes);
 //ASSOCIATION BETWEEN MODELS
 User.hasMany(Commandes, { foreignKey: "user_id" });
 Commandes.belongsTo(User, { foreignKey: "user_id" });
+
 Commandes.belongsToMany(Ingredients, { through: "IngredientsCommande" });
 Ingredients.belongsToMany(Commandes, { through: "IngredientsCommande" });
-
-const jc = await Commandes.create({ user_id: 1 });
 
 // SYNC ALL CREATE TABLE
 await sequelize.sync({ force: true });
@@ -93,17 +92,16 @@ app.post("/command", async (req, res) => {
   //   const message = "ok";
   //   res.json({ message, data: element });
   // });
-
+  console.log(req.body);
   let myNewUser = await User.create({ phone: req.body.Telephone });
   let myNewCommand = await Commandes.create({ userId: myNewUser.id });
-  console.log(req.body);
-  for (const viande of req.body.viandes.id) {
-    // viande représente l'id de la viande ici, d'ou l'intéret que ton front renvoi les id plutôt que les nom de tes ingrédients
-    await IngredientCommand.create({
-      commandId: myNewCommand.id,
-      ingredientId: viande,
-    });
-  }
+
+  // for (const viande of req.body.viandes) {
+  //   await IngredientCommand.create({
+  //     commandId: myNewCommand.id,
+  //     ingredientId: viande,
+  //   });
+  //}
 });
 
 app.get("/command", cors(), async (req, res) => {

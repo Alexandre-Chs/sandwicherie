@@ -7,7 +7,7 @@ export const UsersModel = (sequelize, DataTypes) => {
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
   });
 };
