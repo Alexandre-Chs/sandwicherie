@@ -170,19 +170,26 @@ const Command = () => {
     postData();
   };
 
-  const postData = () => {
-    axios
+  let newArr = [];
+  const postData = async () => {
+    await axios
       .post("http://localhost:8000/command", newArr)
       .then((res) => console.log(res));
   };
 
-  let newArr = [];
-
   useEffect(() => {
     let values = Object.values(command);
+    let phone = Object.keys(command);
+    phone.forEach((element) => {
+      if (element === "0695104463") {
+        newArr.push({ Telephone: element });
+      }
+    });
     values.forEach((element) => {
       arrIngredients.forEach((elementIngr) => {
-        if (typeof element == "string") {
+        if (element === "Telephone") {
+          newArr.push({ Telephone: element });
+        } else if (typeof element == "string") {
           if (element === elementIngr.name) {
             newArr.push(arrIngredients.indexOf(elementIngr));
           }
@@ -194,10 +201,10 @@ const Command = () => {
           });
         }
       });
-      console.log(newArr);
     });
   }, [command]);
 
+  console.log();
   //GET ALL INGREDIENTS
   useEffect(() => {
     async function fetchData() {
