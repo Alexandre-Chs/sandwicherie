@@ -87,15 +87,17 @@ app.post("/users", (req, res) => {
 });
 
 app.post("/command", async (req, res) => {
-  // let reqTelephone = { phone: req.body.Telephone };
-  // User.create(reqTelephone).then((element) => {
-  //   const message = "ok";
-  //   res.json({ message, data: element });
-  // });
-  console.log(req.body);
-  let myNewUser = await User.create({ phone: req.body.Telephone });
-  let myNewCommand = await Commandes.create({ userId: myNewUser.id });
+  let arrPost = req.body;
 
+  let reqTelephone = {};
+  arrPost.map((element) => {
+    reqTelephone = { phone: element.Telephone };
+  });
+
+  console.log(reqTelephone);
+  User.create(reqTelephone);
+  // let myNewUser = await User.create({ phone: req.body.Telephone });
+  // let myNewCommand = await Commandes.create({ userId: myNewUser.id });
   // for (const viande of req.body.viandes) {
   //   await IngredientCommand.create({
   //     commandId: myNewCommand.id,
