@@ -37,6 +37,8 @@ const Command = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   //State for all ingredients
   const [arrIngredients, setArrIngredients] = useState([]);
+  //State arr post
+  const [postIngredients, setPostIngredients] = useState([]);
 
   let openModal = () => {
     setModalIsOpen(true);
@@ -170,26 +172,26 @@ const Command = () => {
     postData();
   };
 
-  let newArr = [];
   const postData = async () => {
     await axios
-      .post("http://localhost:8000/command", newArr)
+      .post("http://localhost:8000/command", postIngredients)
       .then((res) => console.log(res));
   };
 
   useEffect(() => {
+    let newArr = [];
     let values = Object.values(command);
     let phone = Object.keys(command);
-    phone.forEach((element) => {
-      if (element === "0695104463") {
-        newArr.push({ Telephone: element });
+
+    phone.forEach((phoneElement) => {
+      console.log(values);
+      if (phoneElement == "Telephone") {
+        newArr.push({ Telephone: values[values.length - 1] });
       }
     });
     values.forEach((element) => {
       arrIngredients.forEach((elementIngr) => {
-        if (element === "Telephone") {
-          newArr.push({ Telephone: element });
-        } else if (typeof element == "string") {
+        if (typeof element == "string") {
           if (element === elementIngr.name) {
             newArr.push(arrIngredients.indexOf(elementIngr));
           }
@@ -202,9 +204,11 @@ const Command = () => {
         }
       });
     });
+    setPostIngredients(newArr);
   }, [command]);
 
-  console.log();
+  console.log(postIngredients);
+
   //GET ALL INGREDIENTS
   useEffect(() => {
     async function fetchData() {
