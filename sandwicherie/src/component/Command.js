@@ -38,7 +38,7 @@ const Command = () => {
   //State for all ingredients
   const [arrIngredients, setArrIngredients] = useState([]);
   //State arr post
-  const [postIngredients, setPostIngredients] = useState([]);
+  const [postIngredients, setPostIngredients] = useState({});
 
   let openModal = () => {
     setModalIsOpen(true);
@@ -182,33 +182,34 @@ const Command = () => {
     let newArr = [];
     let values = Object.values(command);
     let phone = Object.keys(command);
+    let telephone = "";
 
-    phone.forEach((phoneElement) => {
-      console.log(values);
-      if (phoneElement == "Telephone") {
-        newArr.push({ Telephone: values[values.length - 1] });
-      }
-    });
-    values.forEach((element) => {
-      arrIngredients.forEach((elementIngr) => {
-        if (typeof element == "string") {
-          if (element === elementIngr.name) {
-            newArr.push(arrIngredients.indexOf(elementIngr));
+    values.forEach((value) => {
+      arrIngredients.forEach((element) => {
+        if (typeof value == "string") {
+          if (value == element.name) {
+            newArr.push(element.id);
           }
-        } else if (typeof element == "object") {
-          element.forEach((elements) => {
-            if (elements === elementIngr.name) {
-              newArr.push(arrIngredients.indexOf(elementIngr));
+        } else if (typeof value == "object") {
+          value.forEach((val) => {
+            if (val == element.name) {
+              newArr.push(element.id);
             }
           });
         }
       });
     });
-    setPostIngredients(newArr);
+
+    phone.forEach((phoneElement) => {
+      if (phoneElement == "Telephone") {
+        telephone = values[values.length - 1];
+      }
+    });
+
+    setPostIngredients({ telephone: telephone, ingredients: newArr });
   }, [command]);
 
   console.log(postIngredients);
-
   //GET ALL INGREDIENTS
   useEffect(() => {
     async function fetchData() {
