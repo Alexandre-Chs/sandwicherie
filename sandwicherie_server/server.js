@@ -40,25 +40,27 @@ try {
 export const User = UsersModel(sequelize, DataTypes);
 export const Commandes = CommandesModel(sequelize, DataTypes);
 export const Ingredients = IngredientsModel(sequelize, DataTypes);
+export const jonctIngr = IngredientCommandesModel(sequelize, DataTypes);
 
 //ASSOCIATION BETWEEN MODELS
 User.hasMany(Commandes, { foreignKey: "user_id" });
 Commandes.belongsTo(User, { foreignKey: "user_id" });
 
-Commandes.belongsToMany(Ingredients, { through: "IngredientsCommande" });
-Ingredients.belongsToMany(Commandes, { through: "IngredientsCommande" });
+Commandes.belongsToMany(Ingredients, { through: "ingredientsCommande" });
+Ingredients.belongsToMany(Commandes, { through: "ingredientsCommande" });
 
 // SYNC ALL CREATE TABLE
 await sequelize.sync({ force: true });
+
+//CREATE ALL INGR
+for (const ingr of allIngredients) {
+  await Ingredients.create(ingr);
+}
 
 //ROUTES
 app.get("/", cors(), (req, res) => {
   res.json({ msg: "hello world" });
 });
-
-for (const ingr of allIngredients) {
-  await Ingredients.create(ingr);
-}
 
 //ALL INGREDIENTS GET
 app.get("/ingredients", cors(), async (req, res) => {
@@ -87,27 +89,25 @@ app.post("/users", (req, res) => {
 });
 
 app.post("/command", async (req, res) => {
-  let arrPost = req.body;
-
-  let reqTelephone = {};
-  arrPost.map((element) => {
-    reqTelephone = { phone: element.Telephone };
+  let myNewUser = await User.create({ phone: req.body.telephone });
+  let myNewCommand = await Commandes.create({ user_id: myNewUser.id });
+  let indexIngredient = req.body.ingredients.forEach((element) => {
+    jonctIngr.create({
+      commandeId: myNewCommand.id,
+      ingredientId: element,
+    });
   });
-
-  console.log(reqTelephone);
-  User.create(reqTelephone);
-  // let myNewUser = await User.create({ phone: req.body.Telephone });
-  // let myNewCommand = await Commandes.create({ userId: myNewUser.id });
-  // for (const viande of req.body.viandes) {
-  //   await IngredientCommand.create({
-  //     commandId: myNewCommand.id,
-  //     ingredientId: viande,
-  //   });
-  //}
 });
 
 app.get("/command", cors(), async (req, res) => {
-  console.log(req.body);
+  const user = await User.findAll({
+    include: Commandes,
+  });
+
+  const ingr = await jonctIngr.findAll({
+    include: Commandes,
+  });
+  res.json({ data: ingr });
 });
 
 app.listen(port, () => {

@@ -5,5 +5,8 @@ export const CommandesModel = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+    },
   });
 };
