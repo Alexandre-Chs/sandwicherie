@@ -44,10 +44,16 @@ export const jonctIngr = IngredientCommandesModel(sequelize, DataTypes);
 
 //ASSOCIATION BETWEEN MODELS
 User.hasMany(Commandes, { foreignKey: "user_id" });
-Commandes.belongsTo(User, { foreignKey: "user_id" });
+Commandes.belongsTo(User);
 
-Commandes.belongsToMany(Ingredients, { through: "ingredientsCommande" });
-Ingredients.belongsToMany(Commandes, { through: "ingredientsCommande" });
+Commandes.hasMany(jonctIngr, { foreignKey: "commandeId" });
+jonctIngr.belongsTo(Commandes);
+
+Ingredients.hasMany(jonctIngr, { foreignKey: "ingredientId" });
+jonctIngr.belongsTo(Ingredients);
+
+// Commandes.belongsToMany(Ingredients, { through: "ingredientsCommande" });
+// Ingredients.belongsToMany(Commandes, { through: "ingredientsCommande" });
 
 // SYNC ALL CREATE TABLE
 await sequelize.sync({ force: true });
@@ -101,13 +107,24 @@ app.post("/command", async (req, res) => {
 
 app.get("/command", cors(), async (req, res) => {
   const user = await User.findAll({
-    include: Commandes,
+    include: [
+      {
+        model: Commandes,
+        include: [
+          {
+            model: jonctIngr,
+            include: [
+              {
+                model: Ingredients,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   });
 
-  const ingr = await jonctIngr.findAll({
-    include: Commandes,
-  });
-  res.json({ data: ingr });
+  res.json({ data: user });
 });
 
 app.listen(port, () => {
