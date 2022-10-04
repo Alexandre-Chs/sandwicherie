@@ -1,0 +1,38 @@
+body {
+  overflow-x: auto;
+}
+table,
+td {
+  border: 1px solid black;
+  padding: 5px 15px;
+  width: 150px;
+}
+
+td {
+  font-size: 0.9em;
+}
+
+thead,
+tfoot {
+  background-color: #1c8149;
+  color: white;
+  font-weight: bold;
+}
+
+th {
+  padding: 10px;
+}
+.wrapper__restaurant {
+  display: flex;
+  margin-bottom: 1rem;
+  .delete__restaurant {
+    color: red;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.wrapper__ingredient {
+  display: flex;
+}

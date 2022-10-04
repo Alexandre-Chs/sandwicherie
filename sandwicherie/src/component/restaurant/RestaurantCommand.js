@@ -1,8 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "../../styles/Restaurant/restaurant.css";
+import { TiDelete } from "react-icons/ti";
 
 const RestaurantCommand = () => {
   const [user, setUser] = useState([]);
+
+  const handleClick = async () => {
+    await axios.delete("http://localhost:8000/delete", { data: user });
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -26,18 +32,42 @@ const RestaurantCommand = () => {
   return (
     <div>
       {user.map((element) => (
-        <div>
-          <p>Telephone : {element.phone}</p>
-          <div>
-            Ingredients :
-            {element.commandes.map((elementC) =>
-              elementC.ingredientsCommandes.map((elementI, i) => (
-                <div>
-                  <p>{elementI.ingredient.type}</p>
-                  <p>{elementI.ingredient.name}</p>
-                </div>
-              ))
-            )}
+        <div className="wrapper__restaurant">
+          <table>
+            <thead>
+              <tr>
+                <th colSpan={1}>Telephone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{element.phone}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {
+            <div className="wrapper__ingredient">
+              {element.commandes.map((elementC) =>
+                elementC.ingredientsCommandes.map((elementI, i) => (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colSpan={1}>{elementI.ingredient.type}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{elementI.ingredient.name}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ))
+              )}
+            </div>
+          }
+          <div className="delete__restaurant">
+            <TiDelete size={50} onClick={handleClick} />
           </div>
         </div>
       ))}

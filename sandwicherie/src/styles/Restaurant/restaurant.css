@@ -1,0 +1,50 @@
+body {
+  overflow-x: auto;
+}
+
+table,
+td {
+  border: 1px solid black;
+  padding: 5px 15px;
+  width: 150px;
+}
+
+td {
+  font-size: 0.9em;
+}
+
+thead,
+tfoot {
+  background-color: #1c8149;
+  color: white;
+  font-weight: bold;
+}
+
+th {
+  padding: 10px;
+}
+
+.wrapper__restaurant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.wrapper__restaurant .delete__restaurant {
+  color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.wrapper__ingredient {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=restaurant.css.map */
