@@ -10,6 +10,11 @@ td {
 
 td {
   font-size: 0.9em;
+  height: 40px;
+}
+
+table {
+  min-width: 300px;
 }
 
 thead,
@@ -31,8 +36,4 @@ th {
     align-items: center;
     cursor: pointer;
   }
-}
-
-.wrapper__ingredient {
-  display: flex;
 }

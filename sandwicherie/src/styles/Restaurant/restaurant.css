@@ -11,6 +11,11 @@ td {
 
 td {
   font-size: 0.9em;
+  height: 40px;
+}
+
+table {
+  min-width: 300px;
 }
 
 thead,
@@ -40,11 +45,5 @@ th {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
-}
-
-.wrapper__ingredient {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 /*# sourceMappingURL=restaurant.css.map */
