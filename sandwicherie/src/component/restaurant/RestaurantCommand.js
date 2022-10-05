@@ -5,9 +5,8 @@ import { TiDelete } from "react-icons/ti";
 
 const RestaurantCommand = () => {
   const [user, setUser] = useState([]);
-  const [accomp, setAccomp] = useState([]);
-  const [size, setSize] = useState([]);
-  const [meat, setMeat] = useState([]);
+  const [phone, setPhone] = useState("");
+  const [command, setCommand] = useState([]);
 
   const handleClick = async () => {
     await axios.delete("http://localhost:8000/delete", { data: user });
@@ -28,109 +27,31 @@ const RestaurantCommand = () => {
   }, []);
 
   useEffect(() => {
-    let command = [];
-    let taille = [];
-    let viande = [];
-    user.map((user) => {
-      let accomp = [];
-      let size = [];
-      let meat = [];
-
-      user.commandes.map((command) => {
-        command.ingredientsCommandes.map((ingredient) => {
-          if (ingredient.ingredient.type === "Accompagnement") {
-            accomp.push(ingredient.ingredient.name);
-          }
-
-          if (ingredient.ingredient.type === "Viande") {
-            meat.push(ingredient.ingredient.name);
-          }
-
-          if (ingredient.ingredient.type === "Taille") {
-            size.push(ingredient.ingredient.name);
-          }
+    let tempCommand = [];
+    user.map((phone) => {
+      phone.commandes.map((commande) => {
+        commande.ingredientsCommandes.map((ingredient) => {
+          tempCommand.push(ingredient.ingredient);
         });
+        setCommand(tempCommand);
       });
-      command.push(accomp);
-      taille.push(size);
-      viande.push(meat);
     });
-    setSize(taille);
-    setAccomp(command);
-    setMeat(viande);
   }, [user]);
 
+  console.log(command);
   return (
     <div className="wrapper__restaurant">
-      <div>
-        {user.map((element) => (
-          <div className="wrapper__user">
-            <table>
-              <thead>
-                <tr>
-                  <th colSpan={1}>Telephone</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{element.phone}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </div>
-      <div>
-        {size.map((element) => (
-          <div className="wrapper__user">
-            <table>
-              <thead>
-                <tr>
-                  <th>Taille</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{element}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </div>
-      <div>
-        {meat.map((element) => (
-          <div className="wrapper__user">
-            <table>
-              <thead>
-                <tr>
-                  <th colSpan={1}>Viandes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{`${element}`}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </div>
-      <div>
-        {accomp.map((element) => (
-          <div className="wrapper__accomp">
-            <table>
-              <thead>
-                <tr>
-                  <th>Accompagnements</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{`${element}`}</td>
-                </tr>
-              </tbody>
-            </table>
+      {/* {phone.map((element) => {
+        <div className="element__restaurant">
+          <p>Telephone</p>
+        </div>;
+      })} */}
+
+      <div className="command__restaurant">
+        {command.map((element) => (
+          <div className="element__restaurant">
+            <p>{element.type}</p>
+            <p>{element.name}</p>
           </div>
         ))}
       </div>

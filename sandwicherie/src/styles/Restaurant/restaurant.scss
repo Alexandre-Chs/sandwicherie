@@ -30,10 +30,24 @@ th {
 .wrapper__restaurant {
   display: flex;
   margin-bottom: 1rem;
+  margin-top: 2rem;
   .delete__restaurant {
     color: red;
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+  .command__restaurant {
+    display: flex;
+  }
+  .element__restaurant {
+    width: 200px;
+    text-align: center;
+    background-color: #1c8149;
+    p:first-child {
+      margin-bottom: 10px;
+      font-weight: bold;
+      background-color: red;
+    }
   }
 }

@@ -34,6 +34,7 @@ th {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .wrapper__restaurant .delete__restaurant {
@@ -45,5 +46,23 @@ th {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+}
+
+.wrapper__restaurant .command__restaurant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wrapper__restaurant .element__restaurant {
+  width: 200px;
+  text-align: center;
+  background-color: #1c8149;
+}
+
+.wrapper__restaurant .element__restaurant p:first-child {
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-color: red;
 }
 /*# sourceMappingURL=restaurant.css.map */
