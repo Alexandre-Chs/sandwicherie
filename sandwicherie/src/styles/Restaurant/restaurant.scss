@@ -1,6 +1,7 @@
 body {
   overflow-x: auto;
 }
+
 table,
 td {
   border: 1px solid black;
@@ -27,6 +28,7 @@ tfoot {
 th {
   padding: 10px;
 }
+
 .wrapper__restaurant {
   display: flex;
   margin-bottom: 1rem;
@@ -37,9 +39,11 @@ th {
     align-items: center;
     cursor: pointer;
   }
+
   .command__restaurant {
     display: flex;
   }
+
   .element__restaurant {
     width: 200px;
     text-align: center;

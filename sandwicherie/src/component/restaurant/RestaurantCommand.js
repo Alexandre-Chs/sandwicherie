@@ -18,27 +18,27 @@ const RestaurantCommand = () => {
         const users = res.data.data;
         let arrUsers = [];
         users.map((element) => {
-          arrUsers.push(element);
+          setUser((state) => [...state, element]);
         });
-        setUser(user.concat(users));
       });
     }
     fetchData();
   }, []);
 
   useEffect(() => {
-    let tempCommand = [];
+    let arr = [];
+
     user.map((phone) => {
       phone.commandes.map((commande) => {
         commande.ingredientsCommandes.map((ingredient) => {
-          tempCommand.push(ingredient.ingredient);
+          arr.push(ingredient.ingredient);
         });
-        setCommand(tempCommand);
       });
     });
   }, [user]);
 
   console.log(command);
+
   return (
     <div className="wrapper__restaurant">
       {/* {phone.map((element) => {
@@ -48,12 +48,12 @@ const RestaurantCommand = () => {
       })} */}
 
       <div className="command__restaurant">
-        {command.map((element) => (
+        {/* {command.map((element) => (
           <div className="element__restaurant">
             <p>{element.type}</p>
             <p>{element.name}</p>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
