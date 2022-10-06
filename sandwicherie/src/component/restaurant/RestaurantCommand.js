@@ -6,14 +6,11 @@ import { TiDelete } from "react-icons/ti";
 const RestaurantCommand = () => {
   const [user, setUser] = useState([]);
   const [phone, setPhone] = useState([]);
-  const [command, setCommand] = useState({});
+  const [command, setCommand] = useState([]);
 
   const handleClick = async () => {
     await axios.delete("http://localhost:8000/delete", { data: user });
   };
-
-  let newArr = [];
-
   useEffect(() => {
     async function fetchData() {
       await axios.get("http://localhost:8000/command").then((res) => {
@@ -26,7 +23,7 @@ const RestaurantCommand = () => {
               let type = ingredient.ingredient.type;
               arr.push([type, name]);
             });
-            newArr.push(arr);
+            setCommand((oldCommand) => [...oldCommand, arr]);
           });
         });
       });
@@ -34,17 +31,14 @@ const RestaurantCommand = () => {
     fetchData();
   }, []);
 
-  console.log(newArr);
+  console.log(command);
+
   return (
     <div className="wrapper__restaurant">
-      <div></div>
       <div className="command__restaurant">
-        {/* {command.map((element) => (
-          <div className="element__restaurant">
-            <p>{element.type}</p>
-            <p>{element.name}</p>
-          </div>
-        ))} */}
+        {command.map((element) => (
+          <div>{element}</div>
+        ))}
       </div>
     </div>
   );
