@@ -1,68 +1,36 @@
-body {
-  overflow-x: auto;
-}
-
-table,
-td {
-  border: 1px solid black;
-  padding: 5px 15px;
-  width: 150px;
-}
-
-td {
-  font-size: 0.9em;
-  height: 40px;
-}
-
-table {
-  min-width: 300px;
-}
-
-thead,
-tfoot {
-  background-color: #1c8149;
-  color: white;
-  font-weight: bold;
-}
-
-th {
-  padding: 10px;
-}
-
 .wrapper__restaurant {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-}
-
-.wrapper__restaurant .delete__restaurant {
-  color: red;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .wrapper__restaurant .command__restaurant {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  margin: 2rem;
+  padding: 10px;
+  background-color: #8B9A46;
+  border-radius: 5px;
+  min-width: 200px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  color: #0F0E0E;
 }
 
-.wrapper__restaurant .element__restaurant {
-  width: 200px;
+.wrapper__restaurant .command__restaurant .delete__restaurant {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: #EEEEEE;
+}
+
+.modal__restaurant {
+  color: black;
   text-align: center;
-  background-color: #1c8149;
 }
 
-.wrapper__restaurant .element__restaurant p:first-child {
-  margin-bottom: 10px;
-  font-weight: bold;
-  background-color: red;
+.modal__restaurant .modalButton__restaurant button {
+  margin: 20px 0 0 5px;
 }
 /*# sourceMappingURL=restaurant.css.map */
