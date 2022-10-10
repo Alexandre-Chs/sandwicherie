@@ -127,6 +127,11 @@ app.get("/command", cors(), async (req, res) => {
   res.json({ data: user });
 });
 
+app.delete("/command/:id", async (req, res) => {
+  const id = req.params.id;
+  const user = await User.destroy({ where: { id: id } });
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
