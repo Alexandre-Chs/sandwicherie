@@ -2,34 +2,36 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../styles/Restaurant/restaurant.css";
 import { TiDelete } from "react-icons/ti";
+import { useQuery } from "react-query";
 
 const RestaurantCommand = () => {
   const [command, setCommand] = useState([]);
-  const [data, setData] = useState(null);
+  const [intervalMs, setIntervalMs] = useState(1000);
 
-  const handleDelete = (e) => {
-    let parent = e.currentTarget.parentNode.parentNode.className;
-    let id = parent.split(" ").slice(-1).join("");
-    axios.delete(`http://localhost:8000/command/${id}`);
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:8000/command/${id}`).then((res) => {});
   };
 
-  const fetchData = async () => {
-    await axios.get("http://localhost:8000/command").then((res) => {
-      let command = res.data.data;
-      command.forEach((element) => {
-        setCommand((prevCommand) => [...prevCommand, element]);
-      });
-    });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { data, error, isError, isLoading } = useQuery(
+    "users",
+    async () => {
+      const res = await axios
+        .get("http://localhost:8000/command")
+        .then((res) => {
+          let command = res.data.data;
+          setCommand(command);
+        });
+    },
+    {
+      // Refetch the data every 10 second
+      refetchInterval: intervalMs,
+    }
+  );
 
   return (
     <div className="wrapper__restaurant">
       {command.map((element, i) => (
-        <div className={`command__restaurant ${element.id}`}>
+        <div className={`command__restaurant`}>
           <div key={element.phone.id}>
             <p>{element.phone}</p>
           </div>
@@ -41,10 +43,12 @@ const RestaurantCommand = () => {
             )}
           </div>
           <p className="delete__restaurant">
-            <TiDelete size={35} onClick={handleDelete} />
+            <TiDelete size={35} onClick={() => handleDelete(element.id)} />
           </p>
         </div>
       ))}
+
+      <div></div>
     </div>
   );
 };
