@@ -23,11 +23,12 @@ const RestaurantCommand = () => {
         });
     },
     {
-      // Refetch the data every 10 second
+      // Refetch the data every second
       refetchInterval: intervalMs,
     }
   );
 
+  console.log(data);
   return (
     <div className="wrapper__restaurant">
       {command.map((element, i) => (

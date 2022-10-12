@@ -209,7 +209,6 @@ const Command = () => {
     setPostIngredients({ telephone: telephone, ingredients: newArr });
   }, [command]);
 
-  console.log(postIngredients);
   //GET ALL INGREDIENTS
   useEffect(() => {
     async function fetchData() {
