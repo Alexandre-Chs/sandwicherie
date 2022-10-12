@@ -1,32 +1,16 @@
 import express from "express";
 import cors from "cors";
-import Sequelize from "sequelize";
-import { DataTypes } from "sequelize";
-import * as dotenv from "dotenv";
-import { UsersModel } from "./model/users.js";
-import { CommandesModel } from "./model/commandes.js";
-import { IngredientCommandesModel } from "./model/ingredients_commandes.js";
-import { IngredientsModel } from "./model/ingredients.js";
 import bodyParser from "body-parser";
 import { allIngredients } from "./Ingredients.js";
 
+import { sequelize } from "./ORM/Host.js";
+import { User, Commandes, Ingredients, jonctIngr } from "./ORM/Table.js";
+
 //VARIABLES
-dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
-
-//ORM
-const sequelize = new Sequelize(
-  process.env.DATABASE_NAME,
-  process.env.USERNAME_DB,
-  process.env.PASSWORD_DB,
-  {
-    host: process.env.HOST_DB,
-    dialect: "mysql",
-  }
-);
 
 //AUTHENTICATE
 try {
@@ -36,24 +20,13 @@ try {
   console.error("Unable to connect to the database:", error);
 }
 
-//CREATE TABLE FROM ORM TO SQL WORKBENCH
-export const User = UsersModel(sequelize, DataTypes);
-export const Commandes = CommandesModel(sequelize, DataTypes);
-export const Ingredients = IngredientsModel(sequelize, DataTypes);
-export const jonctIngr = IngredientCommandesModel(sequelize, DataTypes);
-
 //ASSOCIATION BETWEEN MODELS
 User.hasMany(Commandes, { foreignKey: "user_id" });
 Commandes.belongsTo(User);
-
 Commandes.hasMany(jonctIngr, { foreignKey: "commandeId" });
 jonctIngr.belongsTo(Commandes);
-
 Ingredients.hasMany(jonctIngr, { foreignKey: "ingredientId" });
 jonctIngr.belongsTo(Ingredients);
-
-// Commandes.belongsToMany(Ingredients, { through: "ingredientsCommande" });
-// Ingredients.belongsToMany(Commandes, { through: "ingredientsCommande" });
 
 // SYNC ALL CREATE TABLE
 await sequelize.sync({ force: true });
@@ -63,75 +36,81 @@ for (const ingr of allIngredients) {
   await Ingredients.create(ingr);
 }
 
-//ROUTES
-app.get("/", cors(), (req, res) => {
-  res.json({ msg: "hello world" });
-});
-
-//ALL INGREDIENTS GET
-app.get("/ingredients", cors(), async (req, res) => {
-  const ingredients = await Ingredients.findAll();
-  res.json({ data: ingredients });
-});
-
-app.post("/ingredients", (req, res) => {
-  Ingredients.create(req.body).then((element) => {
-    const message = `La taille ${req.body.name} a bien été creer`;
-    res.json({ message, data: element });
-  });
-});
-
-//USERS
-app.get("/users", cors(), async (req, res) => {
-  const users = await User.findAll();
-  res.json({ data: users });
-});
-
-app.post("/users", (req, res) => {
-  User.create(req.body).then((element) => {
-    const message = `Un nouveau users au telephone ${req.body.phone} a bien été creer`;
-    res.json({ message, data: element });
-  });
-});
-
-app.post("/command", async (req, res) => {
-  let myNewUser = await User.create({ phone: req.body.telephone });
-  let myNewCommand = await Commandes.create({ user_id: myNewUser.id });
-  let indexIngredient = req.body.ingredients.forEach((element) => {
-    jonctIngr.create({
-      commandeId: myNewCommand.id,
-      ingredientId: element,
-    });
-  });
-});
-
-app.get("/command", cors(), async (req, res) => {
-  const user = await User.findAll({
-    include: [
-      {
-        model: Commandes,
-        include: [
-          {
-            model: jonctIngr,
-            include: [
-              {
-                model: Ingredients,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  });
-
-  res.json({ data: user });
-});
-
-app.delete("/command/:id", async (req, res) => {
-  const id = req.params.id;
-  const user = await User.destroy({ where: { id: id } });
-});
-
+import { router } from "./ORM/Web.js";
+app.use(router);
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+// //ROUTES
+// app.get("/", cors(), (req, res) => {
+//   res.json({ msg: "hello world" });
+// });
+
+// //ALL INGREDIENTS GET
+// app.get("/ingredients", cors(), async (req, res) => {
+//   const ingredients = await Ingredients.findAll();
+//   res.json({ data: ingredients });
+// });
+
+// app.post("/ingredients", (req, res) => {
+//   Ingredients.create(req.body).then((element) => {
+//     const message = `La taille ${req.body.name} a bien été creer`;
+//     res.json({ message, data: element });
+//   });
+// });
+
+// //USERS
+// app.get("/users", cors(), async (req, res) => {
+//   const users = await User.findAll();
+//   res.json({ data: users });
+// });
+
+// app.post("/users", (req, res) => {
+//   User.create(req.body).then((element) => {
+//     const message = `Un nouveau users au telephone ${req.body.phone} a bien été creer`;
+//     res.json({ message, data: element });
+//   });
+// });
+
+// app.post("/command", async (req, res) => {
+//   let myNewUser = await User.create({ phone: req.body.telephone });
+//   let myNewCommand = await Commandes.create({ user_id: myNewUser.id });
+//   let indexIngredient = req.body.ingredients.forEach((element) => {
+//     jonctIngr.create({
+//       commandeId: myNewCommand.id,
+//       ingredientId: element,
+//     });
+//   });
+// });
+
+// app.get("/command", cors(), async (req, res) => {
+//   const user = await User.findAll({
+//     include: [
+//       {
+//         model: Commandes,
+//         include: [
+//           {
+//             model: jonctIngr,
+//             include: [
+//               {
+//                 model: Ingredients,
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     ],
+//   });
+
+//   res.json({ data: user });
+// });
+
+// app.delete("/command/:id", async (req, res) => {
+//   const id = req.params.id;
+//   const user = await User.destroy({ where: { id: id } });
+// });
+
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
