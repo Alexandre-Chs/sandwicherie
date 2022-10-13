@@ -5,19 +5,19 @@
   .command__restaurant {
     margin: 2rem;
     padding: 10px;
-    background-color: #8B9A46;
+    background-color: #8b9a46;
     border-radius: 5px;
     min-width: 200px;
     text-align: left;
     cursor: pointer;
     position: relative;
-    color: #0F0E0E;
+    color: #0f0e0e;
 
     .delete__restaurant {
       position: absolute;
       top: 0px;
       right: 0px;
-      color: #EEEEEE;
+      color: #eeeeee;
     }
   }
 }
@@ -31,5 +31,49 @@
     button {
       margin: 20px 0 0 5px;
     }
+  }
+}
+
+//*****LOGIN PAGE*****
+.wrapper__loginPage {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .text__loginPage {
+    margin-top: 2rem;
+    font-size: 1.5em;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+}
+.form__restaurant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+
+  .input__restaurant {
+    label {
+      width: auto;
+      transform: translate(0);
+    }
+  }
+
+  .submit__restaurant {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    input[type="submit"] {
+      padding: 10px;
+      border: none;
+      background-color: #eeeeee;
+      border-radius: 3px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  label:hover {
+    font-weight: 500;
   }
 }

@@ -9,20 +9,20 @@
 .wrapper__restaurant .command__restaurant {
   margin: 2rem;
   padding: 10px;
-  background-color: #8B9A46;
+  background-color: #8b9a46;
   border-radius: 5px;
   min-width: 200px;
   text-align: left;
   cursor: pointer;
   position: relative;
-  color: #0F0E0E;
+  color: #0f0e0e;
 }
 
 .wrapper__restaurant .command__restaurant .delete__restaurant {
   position: absolute;
   top: 0px;
   right: 0px;
-  color: #EEEEEE;
+  color: #eeeeee;
 }
 
 .modal__restaurant {
@@ -32,5 +32,67 @@
 
 .modal__restaurant .modalButton__restaurant button {
   margin: 20px 0 0 5px;
+}
+
+.wrapper__loginPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper__loginPage .text__loginPage {
+  margin-top: 2rem;
+  font-size: 1.5em;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.form__restaurant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3rem;
+}
+
+.form__restaurant .input__restaurant label {
+  width: auto;
+  -webkit-transform: translate(0);
+          transform: translate(0);
+}
+
+.form__restaurant .submit__restaurant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1rem;
+}
+
+.form__restaurant .submit__restaurant input[type="submit"] {
+  padding: 10px;
+  border: none;
+  background-color: #eeeeee;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form__restaurant label:hover {
+  font-weight: 500;
 }
 /*# sourceMappingURL=restaurant.css.map */
